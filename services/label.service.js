@@ -1,5 +1,6 @@
 import { storageServiceAsync } from "./async-storage.service.js"
 import { storageService } from "./storage.service.js"
+import { utilService } from "./util.service.js"
 const LABELS_KEY = 'labelsDB'
 _createLabels()
 export const labelService = {
@@ -30,7 +31,7 @@ function save(label) {
     }
 }
 
-function getEmptyLabel(labelName = '', color = 'grey') {
+function getEmptyLabel(labelName = '', color = '#888888') {
     return { labelName, color }
 }
 
@@ -39,12 +40,12 @@ function _createLabels() {
     if (!labels || !labels.length) {
         labels = [
             {
-                id:1,
+                id:"o0XHj3",
                 labelName: 'Important',
                 color: '#e66465'
             },
             {
-                id:2,
+                id:"F5i1UG",
                 labelName: 'funny',
                 color: '#f6b73c'
             }]
