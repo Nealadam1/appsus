@@ -10,7 +10,7 @@ export const utilService = {
     debounce
 }
 
-function debounce(func, timeout = 1200) {
+function debounce(func, timeout = 1000) {
     let timer;
     return (...args) => {
         clearTimeout(timer);
