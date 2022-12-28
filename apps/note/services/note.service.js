@@ -75,7 +75,7 @@ function _createNotes() {
             id: "n102",
             type: "note-img",
             info: {
-                url: "http://some-img/me",
+                url: "http://www.radicalart.info/something/On_Kawara-63-Something-NSE-s.jpg",
                 title: "Bobi and Me"
             },
             style: {
@@ -88,11 +88,22 @@ function _createNotes() {
             info: {
                 label: "Get my stuff together",
                 todos: [
-                    { txt: "Driving liscence", doneAt: null },
-                    { txt: "Coding power", doneAt: 187111111 }
+                    {id:1 ,txt: "Driving liscence", doneAt: null },
+                    {id:2, txt: "Coding power", doneAt: 187111111 }
                 ]
             }
-        }]
+        },
+        {
+            id: "n104",
+            type: "note-video",
+            info: {
+                url: "https://www.youtube.com/watch?v=NBMqqaClEQ8",
+                title: "test vid"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },]
     }
     storageService.saveToStorage(NOTES_KEY,notes)
 }
