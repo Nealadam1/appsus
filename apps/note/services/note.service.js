@@ -52,8 +52,9 @@ function save(note) {
     }
 }
 
-function getEmptyNote(type = '', isPinned = false, info = {})
+function getEmptyNote(type = '', isPinned = false, info = {}){
 return { type, isPinned, info }
+}
 
 function getDefaultFilter() {
     return { label: '' }
@@ -93,6 +94,7 @@ function _createNotes() {
             }
         }]
     }
+    storageService.saveToStorage(NOTES_KEY,notes)
 }
 
 function _createNote(type,isPinned,info){
