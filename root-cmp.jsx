@@ -10,6 +10,7 @@ import { MailDetails } from "./apps/mail/views/mail.details.jsx"
 
 import { NoteIndex } from "./apps/note/views/note-index.jsx"
 import { UserMsg } from "./cmps/user-msg.jsx"
+import { LabelEdit } from "./cmps/label-edit.jsx"
 
 
 
@@ -25,7 +26,9 @@ export function App() {
                     <Route path="/mail" element={<MailIndex />} />
                     <Route path="/mail/:id" element={<MailDetails />} />
 
-                    <Route path="/note" element={<NoteIndex />} />
+                    <Route path="/note" element={<NoteIndex />}>
+                        <Route path="/note/labeledit" element= {<LabelEdit/>}/>
+                    </Route>
                 </Routes>
             </main>
             <UserMsg />
