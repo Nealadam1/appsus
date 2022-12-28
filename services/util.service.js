@@ -6,6 +6,7 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+    displayDate
 }
 
 function makeId(length = 6) {
@@ -55,8 +56,24 @@ function getDayName(date, locale) {
 
 
 function getMonthName(date) {
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr',
+        'May', 'Jun', 'Jul', 'Aug',
+        'Sep', 'Oct', 'Nov', 'Dec'
     ]
     return monthNames[date.getMonth()]
+}
+
+function displayDate(timeStamp) {
+    let currTime = new Date().getTime()
+    let dateFormat = new Date(timeStamp)
+    let dateStr = ''
+
+    console.log(currTime);
+    if (currTime - dateFormat > 86400000) dateStr = utilService.getMonthName(dateFormat) + ' ' + dateFormat.getDay()
+    else {
+        console.log(dateFormat);
+        return dateFormat.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
+        return dateStr = dateFormat.getHours() + ':' + dateFormat.getMinutes()
+    }
+    return dateStr
 }
