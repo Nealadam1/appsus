@@ -8,4 +8,9 @@
     margin: 10px 20px;
     display: flex;
     justify-content: space-between;
+    width: 90%;
+}
+
+.mail:hover {
+    background-color: rgb(218, 218, 218);
 }

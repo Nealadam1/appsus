@@ -68,12 +68,8 @@ function displayDate(timeStamp) {
     let dateFormat = new Date(timeStamp)
     let dateStr = ''
 
-    console.log(currTime);
     if (currTime - dateFormat > 86400000) dateStr = utilService.getMonthName(dateFormat) + ' ' + dateFormat.getDay()
-    else {
-        console.log(dateFormat);
-        return dateFormat.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
-        return dateStr = dateFormat.getHours() + ':' + dateFormat.getMinutes()
-    }
+    else return dateFormat.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+
     return dateStr
 }

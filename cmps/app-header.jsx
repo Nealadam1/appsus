@@ -3,8 +3,8 @@ const { Link, NavLink } = ReactRouterDOM
 export function AppHeader() {
 
     return <header className="app-header">
-        <Link to="/">
-            <h3>LOGO!</h3>
+        <Link className="img-container" to="/">
+            <img className="logo" src="../assets/img/icon.png" alt="" />
         </Link>
         <nav>
             <NavLink to="/">Home</NavLink>

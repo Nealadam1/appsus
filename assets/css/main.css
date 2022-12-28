@@ -1,6 +1,7 @@
 /* Setup */
 
 @import './setup/variables.css';
+@import './setup/typography.css';
 /* @import './setup/fonts.css'; */
 
 /* Basics */
@@ -20,6 +21,8 @@
 
 @import './cmps/user-msg.css';
 @import './cmps/app-header.css';
+@import './cmps/loading.css';
+
 
 /* @import './apps/mail/cmps/mail-list.css'; */
 
@@ -29,3 +32,4 @@
 
 /* mail css */
 @import './appsCss/mail/mail-index.css';
+@import './appsCss/mail/mail-filter.css';

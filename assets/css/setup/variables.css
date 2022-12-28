@@ -1,3 +1,9 @@
 :root {
     --main-bg-color: lightblue;
+
+    /* loading spinner colors */
+    --border-clr: rgb(183, 217, 255);
+    --spinning-bar: rgb(42, 106, 179);
+
+    /*  */
 }
