@@ -1,25 +1,49 @@
 const { useState, useEffect } = React
 
-export function MailFilter() {
-    const [filterBy, setFilterBy] = useState(null)
+import { mailService } from "../services/mail.service.js"
+import { utilService } from "../../../services/util.service.js"
+export function MailFilter({ setFilter }) {
+    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+
+    useEffect(() => {
+        setFilter(filterBy)
+    }, [filterBy])
 
     function handleChange({ target }) {
         let { value, name: field, type } = target
-        console.log(value);
-        setFilterBy()
+        let filterValue = value.split(':')
+
+        if (filterValue.length > 1) {
+            setFilterBy(prevFilter => {
+                return { ...prevFilter, [filterValue[0]]: filterValue[1] }
+            })
+        }
+        else {
+            setFilterBy(prevFilter => {
+                return { ...prevFilter, [field]: value }
+            })
+        }
+
     }
 
     function onSubmitFilter(ev) {
         ev.preventDefault()
-
+        setFilter(filterBy)
     }
 
-    return <form onSubmit={onSubmitFilter}>
+    return <form className="filter-bar" onSubmit={onSubmitFilter}>
         <input type="text"
             id="filterMail"
-            name="filterMail"
+            name="mail"
             placeholder="Search mail"
-            onChange={handleChange}
+            list="filter-options"
+            onChange={utilService.debounce(handleChange)}
         />
+
+        <datalist id="filter-options">
+            <option value="subject:" label="Filter by subject"></option>
+            <option value="name:" label="Filter by title"></option>
+            <option value="label:" label="Filter by label"></option>
+        </datalist>
     </form>
 }

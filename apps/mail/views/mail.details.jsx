@@ -20,7 +20,7 @@ export function MailDetails() {
                 navigate(-1)
             })
     }
-    console.log(mail);
+    // console.log(mail);
     if (!mail) return <LoadingSpinner />
     return (<div>
         <h2>{mail.subject}</h2>

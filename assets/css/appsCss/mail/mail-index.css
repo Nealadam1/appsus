@@ -1,16 +1,43 @@
-.mail-container {
+/* .mail-container {
     background-color: gray;
     border-radius: 30px;
     padding: 10px 0;
 }
 
-.mail {
-    margin: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-}
+
 
 .mail:hover {
     background-color: rgb(218, 218, 218);
+} */
+
+.main-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+}
+
+.mail-container {
+    background-color: rgb(241, 241, 241);
+    border-radius: 10px;
+    margin: 30px;
+    height: 80vh;
+    grid-column-start: 2;
+}
+
+.mail {
+    background-color: bisque;
+    padding: 10px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.filter-bar {
+    grid-column-start: 2;
+}
+
+.mail-content {
+    display: flex;
+
 }

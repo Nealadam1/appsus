@@ -17,13 +17,27 @@ export function MailList({ mails }) {
         else return mail.substring(0, mail.length)
     }
 
-    return <section className="mail-container">
-        {mails.map(mail => <Link to={`/mail/${mail.id}`} key={mail.id} className='mail'>
-            <div>{shortEmail(mail.subject)}</div>
-            <div>{shortBody(mail.body)}</div>
-            <div>{utilService.displayDate(mail.sentAt)}</div>
-        </Link>)}
+    function starMsg(id) {
+        console.log(id);
+    }
 
-    </section>
+    return <section className="mail-container">
+        <div className="btn-container">a</div>
+
+        {mails.map(mail => <div className="mail-content">
+            <button>select</button>
+            <button onClick={() => starMsg(mail.id)}>star</button>
+
+            <Link to={`/mail/${mail.id}`} key={mail.id} className='mail'>
+
+                <div>{shortEmail(mail.subject)}</div>
+                <div>{shortBody(mail.body)}</div>
+                <div>{utilService.displayDate(mail.sentAt)}</div>
+            </Link>
+        </div>
+        )
+        }
+
+    </section >
 
 }

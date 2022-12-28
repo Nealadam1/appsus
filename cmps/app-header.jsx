@@ -1,9 +1,14 @@
-const { Link, NavLink } = ReactRouterDOM
+const { useParams, useNavigate, Link, NavLink, useLocation } = ReactRouterDOM
+
+import { MailSideMenu } from "../apps/mail/cmps/mail-side-menu.jsx"
 
 export function AppHeader() {
+    let { pathname } = useLocation()
+    console.log(pathname);
 
     return <header className="app-header">
         <Link className="img-container" to="/">
+            {(pathname === '/mail') && <MailSideMenu />}
             <img className="logo" src="../assets/img/icon.png" alt="" />
         </Link>
         <nav>

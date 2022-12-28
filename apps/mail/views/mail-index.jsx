@@ -7,20 +7,24 @@ import { mailService } from "../services/mail.service.js"
 
 export function MailIndex() {
     const [mails, setMails] = useState([])
+    const [filterBy, setFilterBy] = useState(null)
 
     useEffect(() => {
-        loadMails()
-    }, [])
+        loadMails(filterBy)
+    }, [filterBy])
 
-    console.log(mails)
+    // console.log(mails)
 
     function loadMails() {
-        mailService.query().then(mails => setMails(mails))
+        mailService.query(filterBy).then(mails => setMails(mails))
     }
 
+    function setFilter(filterBy) {
+        setFilterBy(filterBy)
+    }
 
-    return <div>
-        <MailFilter />
+    return <div className="main-container">
+        <MailFilter setFilter={setFilter} />
         <MailList mails={mails} />
     </div>
 }

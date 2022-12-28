@@ -4,13 +4,20 @@ header {
 }
 
 .app-header {
-    display: flex;
+    display: grid;
     justify-content: space-between;
     padding: 20px 0;
+    grid-template-columns: 40px 1fr 1fr 40px;
+}
+
+nav {
+    display: flex;
+    justify-content: end;
 }
 
 nav a {
     margin: .5em;
+    grid-column-start: 3;
 }
 
 nav a:active {
@@ -21,4 +28,9 @@ nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;
+}
+
+.img-container {
+    width: 100px;
+    grid-column-start: 2;
 }
