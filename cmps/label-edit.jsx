@@ -1,3 +1,4 @@
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { labelService } from "../services/label.service.js"
 import { LabelList } from "./label-list.jsx"
 
@@ -22,10 +23,11 @@ export function LabelEdit() {
                 console.log(labels)
             })
     }
-    function onRemoveLabel(labelId) {
+    function onRemoveLabel(labelId, ev) {
+        ev.preventDefault()
         labelService.remove(labelId)
             .then(() => {
-                const updatedLabels = labels.filter(label => label.id !== labelId)
+                const updatedLabels = labelsToEdit.filter(label => label.id !== labelId)
                 setLabelsToEdit(updatedLabels)
                 showSuccessMsg('Label Deleted')
             })
@@ -37,15 +39,23 @@ export function LabelEdit() {
 
     function handleChange({ target }) {
         let { id, value, type, name: field } = target;
-        console.log(id)
         value = type === 'number' ? +value : value;
         setLabelsToEdit((prevlabels) =>
-            prevlabels.map((label) => {console.log(label.id)
-               return label.id === +id ? { ...label, [field]: value } : label
+            prevlabels.map((label) => {
+                return label.id === +id ? { ...label, [field]: value } : label
             })
         );
     }
-    function onSaveLabels() {
+    function onSaveLabels(ev) {
+        ev.preventDefault()
+        labelsToEdit.forEach(labelToEdit => {
+            labelService.save(labelToEdit).then(updatedLabel => console.log(updatedLabel))
+        })
+        console.log('labels saved', labelsToEdit)
+        showSuccessMsg('Labels Saved')
+
+
+
 
     }
 
@@ -72,10 +82,13 @@ export function LabelEdit() {
                         onChange={handleChange}
 
                     />
-                    <button onClick={() => onRemoveLabel(labelToEdit.id)}>X</button>
+                    <button onClick={(ev) => onRemoveLabel(labelToEdit.id, ev)}>X</button>
                 </div>
-
             })}
+
+            <hr></hr>
+            
+            <button>Done</button>
         </form>
     </div>
 

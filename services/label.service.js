@@ -23,7 +23,7 @@ function remove(lableId) {
 }
 
 function save(label) {
-    if (note.id) {
+    if (label.id) {
         return storageServiceAsync.put(LABELS_KEY, label)
     } else {
         return storageServiceAsync.post(LABELS_KEY, label)
