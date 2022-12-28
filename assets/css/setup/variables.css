@@ -5,5 +5,7 @@
     --border-clr: rgb(183, 217, 255);
     --spinning-bar: rgb(42, 106, 179);
 
-    /*  */
+    /* mail colors */
+    --mail-bg: rgb(201, 201, 201);
+    --hover-border-clr: rgb(97, 97, 97);
 }

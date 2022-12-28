@@ -12,10 +12,16 @@ export function MailFilter({ setFilter }) {
         console.log('mail-filter query params');
         console.log(Object.fromEntries([...searchParams]))
         // console.log(filterBy[]);
+
+        return () => {
+        }
     }, [])
     useEffect(() => {
         setFilter(filterBy)
         setSearchParams(filterBy)
+
+        return () => {
+        }
     }, [filterBy])
 
     function handleChange({ target }) {

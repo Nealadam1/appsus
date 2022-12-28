@@ -27,7 +27,7 @@ export function App() {
                     <Route path="/mail/:id" element={<MailDetails />} />
 
                     <Route path="/note" element={<NoteIndex />}>
-                        <Route path="/note/labeledit" element= {<LabelEdit/>}/>
+                        <Route path="/note/labeledit" element={<LabelEdit />} />
                     </Route>
                 </Routes>
             </main>

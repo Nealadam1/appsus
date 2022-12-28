@@ -34,3 +34,4 @@
 /* mail css */
 @import './appsCss/mail/mail-index.css';
 @import './appsCss/mail/mail-filter.css';
+@import './appsCss/mail/mail-preview.css';

@@ -8,7 +8,7 @@ export function AppHeader() {
 
     return <header className="app-header">
         <Link className="img-container" to="/">
-            {(pathname === '/mail') && <MailSideMenu />}
+            <MailSideMenu />
             <img className="logo" src="../assets/img/icon.png" alt="" />
         </Link>
         <nav>

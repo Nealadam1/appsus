@@ -2,6 +2,7 @@ const { useState, useEffect } = React
 
 import { MailList } from "../cmps/mail-list.jsx"
 import { MailFilter } from "../cmps/mail-filter.jsx"
+import { LoadingSpinner } from "../../../cmps/loading-spinner.jsx"
 
 import { mailService } from "../services/mail.service.js"
 
@@ -23,6 +24,7 @@ export function MailIndex() {
         setFilterBy(filterBy)
     }
 
+    if (!mails) return <LoadingSpinner />
     return <div className="main-container">
         <MailFilter setFilter={setFilter} />
         <MailList mails={mails} />

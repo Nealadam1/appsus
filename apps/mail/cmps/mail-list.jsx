@@ -10,16 +10,19 @@ export function MailList({ mails }) {
     return <section className="mail-container">
         <div className="btn-container">a</div>
 
-        <table border="1">
+        <table border="0" cellSpacing="0">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Starred</th>
                     <th>Vendor</th>
                     <th>Speed</th>
                 </tr>
             </thead>
             <tbody>
-                {mails.map(mail => <MailPreview mail={mail} key={mail.id} />)}
+                {mails.map(mail => {
+                    console.log(mail.isStared);
+                    return <MailPreview mail={mail} key={mail.id} />
+                })}
             </tbody>
         </table>
 
