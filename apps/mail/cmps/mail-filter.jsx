@@ -5,20 +5,18 @@ import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
 export function MailFilter({ setFilter }) {
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
-    const [searchParams, setSearchParams] = useSearchParams({})
+    // const [searchParams, setSearchParams] = useSearchParams({})
 
     useEffect(() => {
         // Query params later
-        console.log('mail-filter query params');
-        console.log(Object.fromEntries([...searchParams]))
+        // console.log('mail-filter query params');
+        // console.log(Object.fromEntries([...searchParams]))
         // console.log(filterBy[]);
 
-        return () => {
-        }
     }, [])
     useEffect(() => {
         setFilter(filterBy)
-        setSearchParams(filterBy)
+        // setSearchParams(filterBy)
 
         return () => {
         }
@@ -28,13 +26,13 @@ export function MailFilter({ setFilter }) {
         let { value, name: field, type } = target
         let filterValue = value.split(':')
         if (filterValue.length === 0) {
-            setSearchParams(mailService.getDefaultFilter())
+            // setSearchParams(mailService.getDefaultFilter())
             setFilterBy(mailService.getDefaultFilter())
         }
 
         if (filterValue.length > 1) {
             setFilterBy(prevFilter => {
-                setSearchParams(mailService.getDefaultFilter())
+                // setSearchParams(mailService.getDefaultFilter())
 
                 return { ...prevFilter, [filterValue[0]]: filterValue[1] }
             })

@@ -4,22 +4,23 @@ const { Link, useParams } = ReactRouterDOM
 import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
 
-export function MailPreview({ mail }) {
+export function MailPreview({ mail, onMailRead }) {
     const [isExpanded, setIsExpanded] = useState(false)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-    const [isReadMail, setIsReadMail] = useState(false)
+    const [staredMsg, setStaredMsg] = useState(false)
     const { id } = useParams()
     let readDynmClass = mail.isRead ? 'read-mail' : 'unread-mail'
+    let staredDynmClass = staredMsg ? 'favorite' : 'normal'
 
     useEffect(() => {
         getWindowSize()
-
+        setStaredMsg(mail.isStared)
         window.addEventListener('resize', () => { setWindowWidth(getWindowSize()) })
 
         return () => {
             console.log('stopped');
         }
-    }, [])
+    }, [mail])
 
     function getWindowSize() {
         const { innerWidth } = window;
@@ -36,20 +37,42 @@ export function MailPreview({ mail }) {
         else return mail.substring(0, mail.length)
     }
 
-    function setRead(id) {
-        setIsReadMail(true)
+    const setRead = () => {
+        if (mail.isRead) return
+        else onMailRead(-1)
+
         mail.isRead = true
         mailService.save(mail)
+        // Call the onMailRead callback function when the mail is read
+
     }
-    function unRead(id) {
-        setIsReadMail(false)
+    function unRead() {
         mail.isRead = false
         mailService.save(mail)
+        onMailRead(1)
     }
 
-    function starMsg(id) {
+    function starMsg(ev, id) {
+        ev.stopPropagation()
+        setStaredMsg(!staredMsg)
+        mail.isStared = !staredMsg
+        mailService.save(mail)
         console.log(id);
     }
+
+
+    function selectMsg(ev, id) {
+        ev.stopPropagation()
+
+    }
+
+    function onDeleteMail(id) {
+        mail.isDeleted = true
+        mailService.save(mail)
+
+
+    }
+
 
     function expandMail() {
         console.log(id);
@@ -57,47 +80,64 @@ export function MailPreview({ mail }) {
             <h2>hello</h2>
         </Link>
     }
-    // console.log(mail);
+
+
     return <Fragment>
-        <tr className={readDynmClass} onClick={() => {
+        <tr hidden={mail.isDeleted} className={readDynmClass + ' ' + staredDynmClass} onClick={() => {
             setRead(mail.id)
             setIsExpanded(!isExpanded)
         }}>
+
+
             <td className="left-side">
-                <button onClick={() => starMsg(mail.id)}>Star</button>
-                <button>select</button>
+                <button className="fav-btn" onClick={(ev) => starMsg(ev, mail.id)}>Star</button>
+                {/* <button onClick={(ev) => selectMsg(ev, mail.id)}>select</button> */}
                 <p>{mail.subject}</p>
 
             </td>
+
             <td>
                 <p>{shortBody(mail.body)}</p>
             </td>
+
             <td>
                 {utilService.displayDate(mail.sentAt)}
             </td>
         </tr>
         <tr hidden={!isExpanded} className="hidden-data">
             <td colSpan="3">
+
                 <div className="hidden-container">
+
                     <div className="mail-btn-container">
+
                         <div>
                             <h2>{mail.subject}</h2>
                             <h3>{mail.fromName}</h3>
                             <h4>&#60;{mail.email}&#62;</h4>
                         </div>
+
                         <div className="btn-spacer">
-                            <button>Delete</button>
+                            <button onClick={() => {
+                                onDeleteMail(mail.id)
+                                setIsExpanded(!isExpanded)
+                            }}>Delete</button>
+
                             <button onClick={() => {
                                 setIsExpanded(!isExpanded)
                                 unRead(mail.id)
                             }}>UnRead</button>
+
                             <button onClick={expandMail}>Expand</button>
+
                         </div>
+
                     </div>
 
                     <div className="">{mail.body}</div>
 
                 </div>
+
             </td>
         </tr>
     </Fragment>
