@@ -3,6 +3,7 @@ import { storageServiceAsync } from '../../../services/async-storage.service.js'
 import { utilService } from '../../../services/util.service.js'
 
 const MAIL_KEY = 'mailDB'
+const SENT_MAIL_KEY = 'sendMailDB'
 const loggedinUser = {
     email: 'user@appsus.com',
     fullname: 'Mahatma Appsus'
@@ -17,7 +18,9 @@ export const mailService = {
     remove,
     get,
     getEmptyMail,
-    getDefaultFilter
+    getDefaultFilter,
+    submitMail,
+    getSentMails
 
 }
 
@@ -42,9 +45,10 @@ function query(filterBy = getDefaultFilter()) {
                 const regex = new RegExp(filterBy.mail, 'i')
                 mails = mails.filter(mail => regex.test(mail.email))
             }
-            if (filterBy === null) {
-                mails = mails
+            else {
+                return mails
             }
+
             // console.log(filterBy);
             return mails
         })
@@ -58,25 +62,45 @@ function save(mail) {
     }
 }
 
+function saveSentMails(mail) {
+    if (mail.id) {
+        return storageServiceAsync.put(SENT_MAIL_KEY, mail)
+    } else {
+        return storageServiceAsync.post(SENT_MAIL_KEY, mail)
+    }
+}
+
+function getSentMails() {
+    return storageServiceAsync.query(SENT_MAIL_KEY)
+}
+
 function remove(mailId) {
     return storageService.remove(MAIL_KEY, mailId)
 }
 
 function get(mailId) {
-    console.log(mailId);
     return storageServiceAsync.get(MAIL_KEY, mailId)
 }
 
 function getEmptyMail(subject = '', email = '', body = '', isRead = false, isStared = false, sentAt = 0, to = '', fromName = '', isDeleted = false) {
-    return { id: utilService.makeId(), email, subject, body, isRead, isStared, sentAt, to, fromName, isDeleted }
+    return { id: '', email, subject, body, isRead, isStared, sentAt, to, fromName, isDeleted }
 }
 
 function getDefaultFilter() {
     return { mail: '', currFolder: '', label: '', subject: '' }
 }
 
-function _createMails() {
+function submitMail(mailData) {
+    mailData.sentAt = new Date().getTime()
+    mailData.email = loggedinUser.email
 
+    if (mailData.to === loggedinUser.email) {
+        console.log(mailData.id);
+        save(mailData)
+        saveSentMails(mailData)
+    } else {
+        saveSentMails(mailData)
+    }
 }
 
 function _createMail(subject = '', email = '', body = '', isRead = false, isStared = false, sentAt = 0, to = '', fromName = '', isDeleted = false) {
@@ -107,28 +131,28 @@ function _demoData() {
             Best regards,
             Miss Caroline Freund.`, false, false, 1551133930594, loggedinUser.email, 'eden'))
 
-
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
+        emails.map(email => email.id = (Math.random() * Math.random()))
         storageService.saveToStorage(MAIL_KEY, emails)
     }
 

@@ -4,7 +4,7 @@ const { Link, useParams } = ReactRouterDOM
 import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
 
-export function MailPreview({ mail, onMailRead }) {
+export function MailPreview({ mail, onMailRead, isRenderDeleted, displayStarred, displaySent }) {
     const [isExpanded, setIsExpanded] = useState(false)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const [staredMsg, setStaredMsg] = useState(false)
@@ -18,7 +18,6 @@ export function MailPreview({ mail, onMailRead }) {
         window.addEventListener('resize', () => { setWindowWidth(getWindowSize()) })
 
         return () => {
-            console.log('stopped');
         }
     }, [mail])
 
@@ -46,6 +45,7 @@ export function MailPreview({ mail, onMailRead }) {
         // Call the onMailRead callback function when the mail is read
 
     }
+
     function unRead() {
         mail.isRead = false
         mailService.save(mail)
@@ -60,19 +60,15 @@ export function MailPreview({ mail, onMailRead }) {
         console.log(id);
     }
 
-
     function selectMsg(ev, id) {
         ev.stopPropagation()
 
     }
 
-    function onDeleteMail(id) {
+    function onDeleteMail() {
         mail.isDeleted = true
         mailService.save(mail)
-
-
     }
-
 
     function expandMail() {
         console.log(id);
@@ -81,9 +77,22 @@ export function MailPreview({ mail, onMailRead }) {
         </Link>
     }
 
+    function renderDeleted() {
+        if (isRenderDeleted) return !mail.isDeleted
+        else return mail.isDeleted
+    }
+    function renderSent() {
+        if (displaySent) {
+            isRenderDeleted = false
+            return true
+        } else return false
+    }
 
-    return <Fragment>
-        <tr hidden={mail.isDeleted} className={readDynmClass + ' ' + staredDynmClass} onClick={() => {
+
+    // console.log(mail.id);
+
+    return <Fragment key={`test${mail.id}`}>
+        <tr hidden={renderDeleted()} className={readDynmClass + ' ' + staredDynmClass} onClick={() => {
             setRead(mail.id)
             setIsExpanded(!isExpanded)
         }}>
@@ -119,7 +128,7 @@ export function MailPreview({ mail, onMailRead }) {
 
                         <div className="btn-spacer">
                             <button onClick={() => {
-                                onDeleteMail(mail.id)
+                                onDeleteMail()
                                 setIsExpanded(!isExpanded)
                             }}>Delete</button>
 

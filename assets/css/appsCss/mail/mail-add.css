@@ -1,0 +1,22 @@
+.compose-container {
+    position: fixed;
+    bottom: 0;
+    background-color: gray;
+    min-width: 20vh;
+    min-height: 20vh
+}
+
+.text-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-area div {
+    display: flex;
+    justify-content: center;
+}
+
+.text-area .msg-header {
+    justify-content: space-between;
+
+}

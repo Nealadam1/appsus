@@ -12,13 +12,27 @@ export function MailIndex() {
     const [mails, setMails] = useState([])
     const [filterBy, setFilterBy] = useState(null)
     const [renderDeleted, setRenderDeleted] = useState(null)
+    const [renderStarred, setRenderStarred] = useState(null)
+    const [renderSent, setRenderSent] = useState(null)
 
     useEffect(() => {
         loadMails(filterBy)
     }, [filterBy])
 
+    // console.log(renderDeleted);
+    // console.log(renderStarred);
+    // console.log(renderSent);
+
     function displayDeleted() {
         setRenderDeleted(!renderDeleted)
+    }
+
+    function displayStarred() {
+        setRenderStarred(!renderStarred)
+    }
+
+    function displaySent() {
+        setRenderSent(!renderSent)
     }
 
     function loadMails() {
@@ -34,13 +48,13 @@ export function MailIndex() {
 
         <div className="compose-email">
             <Outlet />
+            <MailFolderList displayDeleted={displayDeleted} displayStarred={displayStarred} displaySent={displaySent} />
         </div>
 
         <MailCompose />
-        <MailFolderList displayDeleted={displayDeleted} />
 
         <MailFilter setFilter={setFilter} />
-        <MailList mails={mails} isRenderDeleted={renderDeleted} />
+        <MailList mails={mails} isRenderDeleted={renderDeleted} displayStarred={renderStarred} displaySent={renderSent} />
     </div>
 }
 

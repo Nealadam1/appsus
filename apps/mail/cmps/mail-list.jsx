@@ -3,19 +3,28 @@ const { Link } = ReactRouterDOM
 
 import { MailPreview } from "./mail-preview.jsx"
 import { utilService } from "../../../services/util.service.js"
+import { mailService } from "../services/mail.service.js"
 
 
-export function MailList({ mails, isRenderDeleted }) {
+export function MailList({ mails, isRenderDeleted, displayStarred, displaySent }) {
     const [unreadCount, setUnreadCount] = useState(null)
+    const [sentMails, setSentMails] = useState(null)
+    const deletedMails = mails.filter(mail => mail.isDeleted)
+    const starredMails = mails.filter(mail => mail.isStared)
+
 
     useEffect(() => {
         const count = mails.filter(mail => !mail.isRead).length
         setUnreadCount(count)
+        getSentMails()
     }, [mails])
-    console.log();
 
     function handleMailRead(dif) {
         setUnreadCount(unreadCount + (dif))
+    }
+
+    function getSentMails() {
+        mailService.getSentMails().then(mails => setSentMails(mails))
     }
 
 
@@ -31,29 +40,25 @@ export function MailList({ mails, isRenderDeleted }) {
                 </tr>
             </thead>
             <tbody>
-                {mails.map(mail => {
-                    // console.log(mail.isDeleted);
 
-                    if (isRenderDeleted) return <Fragment></Fragment>
-                    return <MailPreview mail={mail} key={mail.id} onMailRead={handleMailRead} />
+                {displaySent && starredMails.map(mail => {
+                    return <Fragment>{mail.isStared && <MailPreview mail={mail} key={mail.id} onMailRead={handleMailRead} isRenderDeleted={isRenderDeleted} />}</Fragment>
+                })}
+
+                {displaySent && sentMails.map(mail => {
+                    return <MailPreview mail={mail} key={mail.id} onMailRead={handleMailRead} isRenderDeleted={isRenderDeleted} />
+                })}
+
+                {isRenderDeleted && deletedMails.map(mail => {
+                    return <Fragment>{mail.isDeleted && <MailPreview mail={mail} key={mail.id} onMailRead={handleMailRead} isRenderDeleted={isRenderDeleted} />}</Fragment>
+                })}
+
+                {(!isRenderDeleted) && mails.map(mail => {
+                    return <MailPreview mail={mail} key={mail.id} onMailRead={handleMailRead}
+                        displayStarred={displayStarred} displaySent={displaySent} />
                 })}
             </tbody>
         </table>
-
-
-        {/* {mails.map(mail => <div key={mail.id} className="mail-content">
-            <button>select</button>
-            <button onClick={() => starMsg(mail.id)}>star</button>
-
-            <Link to={`/mail/${mail.id}`} key={mail.id} className='mail'>
-
-                <div>{shortEmail(mail.subject)}</div>
-                <div>{shortBody(mail.body)}</div>
-                <div>{utilService.displayDate(mail.sentAt)}</div>
-            </Link>
-        </div>
-        )
-        } */}
 
     </section >
 
