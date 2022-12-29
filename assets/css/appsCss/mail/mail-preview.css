@@ -55,3 +55,7 @@ tr:hover {
     margin: 10px 0 20px 20px;
     cursor: default;
 }
+
+.favorite .fav-btn {
+    background-color: aqua;
+}
