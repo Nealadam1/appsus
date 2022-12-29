@@ -131,7 +131,7 @@ export function MailPreview({ mail, onMailRead, isRenderDeleted, displayStarred,
                             <button onClick={() => {
                                 onDeleteMail()
                                 setIsExpanded(!isExpanded)
-                            }}>Delete</button>
+                            }}><i className="fa-solid fa-trash"></i></button>
 
                             <button onClick={() => {
                                 setIsExpanded(!isExpanded)

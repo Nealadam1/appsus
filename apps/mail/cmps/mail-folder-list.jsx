@@ -9,8 +9,8 @@ export function MailFolderList({ displayDeleted, displayStarred, displaySent }) 
 
     return <div>
 
-        <button className={activeDeleted ? 'active' : null} onClick={() => { displayDeleted(true); setActiveDeleted(!activeDeleted) }}><i className="fa fa-search"></i></button>
-        <button className={activeStar ? 'active' : null} onClick={() => { displayStarred(true); setActiveStar(!activeStar) }}>Starred</button>
+        <button className={activeDeleted ? 'active' : null} onClick={() => { displayDeleted(true); setActiveDeleted(!activeDeleted) }}><i className="fa-solid fa-trash"></i></button>
+        <button className={activeStar ? 'active' : null} onClick={() => { displayStarred(true); setActiveStar(!activeStar) }}><i className="fa-solid fa-star"></i></button>
         <button className={activeSent ? 'active' : null} onClick={() => { displaySent(true); setActiveSent(!activeSent) }}>Sent Mail</button>
     </div>
 }
