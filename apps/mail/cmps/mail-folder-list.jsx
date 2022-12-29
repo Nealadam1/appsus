@@ -1,11 +1,16 @@
+
 const { useState, useEffect, Fragment } = React
 
+import ReactLogo from ''
 export function MailFolderList({ displayDeleted, displayStarred, displaySent }) {
-    const [activeBtn, setActiveBtn] = useState(null)
+    const [activeDeleted, setActiveDeleted] = useState(null)
+    const [activeStar, setActiveStar] = useState(null)
+    const [activeSent, setActiveSent] = useState(null)
 
     return <div>
-        <button className={activeBtn === 'deleted' ? 'active' : null} onClick={() => { displayDeleted(true); setActiveBtn('deleted') }}>Deleted</button>
-        <button className={activeBtn === 'starred' ? 'active' : null} onClick={() => { displayStarred(true); setActiveBtn('starred') }}>Starred</button>
-        <button className={activeBtn === 'sent' ? 'active' : null} onClick={() => { displaySent(true); setActiveBtn('sent') }}>Sent Mail</button>
+
+        <button className={activeDeleted ? 'active' : null} onClick={() => { displayDeleted(true); setActiveDeleted(!activeDeleted) }}><i className="fa fa-search"></i></button>
+        <button className={activeStar ? 'active' : null} onClick={() => { displayStarred(true); setActiveStar(!activeStar) }}>Starred</button>
+        <button className={activeSent ? 'active' : null} onClick={() => { displaySent(true); setActiveSent(!activeSent) }}>Sent Mail</button>
     </div>
 }
