@@ -52,7 +52,8 @@ function save(note) {
     }
 }
 
-function getEmptyNote(type = '', isPinned = false, info = {}){
+function getEmptyNote(type = '', isPinned = false, info = {url:'',title:'',txt:''
+,label:'', todos:[{id:null ,txt:''}]}){
 return { type, isPinned, info }
 }
 
@@ -68,7 +69,8 @@ function _createNotes() {
             type: "note-txt",
             isPinned: true,
             info: {
-                txt: "Fullstack Me Baby!"
+                txt: "Fullstack Me Baby!",
+                title: "someTitle"
             }
         },
         {

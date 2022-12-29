@@ -4,6 +4,7 @@ import { noteService } from "../services/note.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { LoadingSpinner } from "../../../cmps/loading-spinner.jsx"
 import { Labels } from "../../../cmps/labels.jsx"
+import { AddNote } from "../cmps/add-note.jsx"
 
 const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
@@ -62,6 +63,7 @@ export function NoteIndex() {
         </section>
         <div className="notes-container">
             <NoteFilter />
+            <AddNote/>
             {isLoading && <LoadingSpinner />}
             {!isLoading && <NoteList notes={notes} onRemoveNote={onRemoveNote} />}
 
