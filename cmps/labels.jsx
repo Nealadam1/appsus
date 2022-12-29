@@ -19,17 +19,20 @@ export function Labels() {
 
 
     useEffect(() => {
-        
 
-        eventBusService.on('label-saved', handleLabelSaved)
-        eventBusService.on('label-removed', handleLabelSaved)
+
+        const unsubscribeSave = eventBusService.on('label-saved', handleLabelSaved)
+        const unsubscribeRemove = eventBusService.on('label-removed', handleLabelSaved)
         loadLabels()
 
         return () => {
-            eventBusService.off('label-saved', handleLabelSaved);
+            unsubscribeSave()
+            unsubscribeRemove()
         }
+
+
     }, [])
-    
+
     function handleLabelSaved() {
         loadLabels()
     }
