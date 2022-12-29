@@ -41,7 +41,7 @@ export function MailList({ mails, isRenderDeleted, displayStarred, displaySent }
             </thead>
             <tbody>
 
-                {displaySent && starredMails.map(mail => {
+                {displayStarred && starredMails.map(mail => {
                     return <Fragment>{mail.isStared && <MailPreview mail={mail} key={mail.id} onMailRead={handleMailRead} isRenderDeleted={isRenderDeleted} />}</Fragment>
                 })}
 
@@ -53,7 +53,7 @@ export function MailList({ mails, isRenderDeleted, displayStarred, displaySent }
                     return <Fragment>{mail.isDeleted && <MailPreview mail={mail} key={mail.id} onMailRead={handleMailRead} isRenderDeleted={isRenderDeleted} />}</Fragment>
                 })}
 
-                {(!isRenderDeleted) && mails.map(mail => {
+                {(!isRenderDeleted && !displayStarred) && mails.map(mail => {
                     return <MailPreview mail={mail} key={mail.id} onMailRead={handleMailRead}
                         displayStarred={displayStarred} displaySent={displaySent} />
                 })}

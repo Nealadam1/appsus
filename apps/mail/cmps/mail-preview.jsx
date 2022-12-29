@@ -84,6 +84,7 @@ export function MailPreview({ mail, onMailRead, isRenderDeleted, displayStarred,
     function renderSent() {
         if (displaySent) {
             isRenderDeleted = false
+            displayStarred = false
             return true
         } else return false
     }
