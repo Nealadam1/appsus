@@ -13,6 +13,7 @@ const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
 export function NoteIndex() {
+    const navigate=useNavigate()
     const [isEditModal,setEditModal] =useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
@@ -45,6 +46,7 @@ export function NoteIndex() {
             })
     }
     function onCloseEdit(){
+        navigate('/note')
         setEditModal(false)  
     }
     function onOpenEdit(){

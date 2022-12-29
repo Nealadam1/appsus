@@ -8,3 +8,8 @@
     font-weight: 400;
     src: url('../../fonts/webfonts/fa-regular-400.woff2') format('woff2'),
 }
+
+@font-face {
+    font-family: roboto;
+    src: url('../../fonts/Roboto-Regular.ttf');
+}

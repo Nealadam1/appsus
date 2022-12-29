@@ -32,9 +32,9 @@ export function AddNote() {
         <div className="add-note">
             <div onClick={(ev) => setNoteType('note-txt',ev)}>
                 Enter Text...
-                <button onClick={(ev) => setNoteType('note-img', ev)}>IMG</button>
-                <button onClick={(ev) => setNoteType('note-todos', ev)}>TODO</button>
-                <button onClick={(ev) => setNoteType('note-video', ev)}>YT</button>
+                <i onClick={(ev) => setNoteType('note-img', ev)}>IMG</i>
+                <i onClick={(ev) => setNoteType('note-todos', ev)}>TODO</i>
+                <i onClick={(ev) => setNoteType('note-video', ev)}>YT</i>
             </div>
 
         </div>

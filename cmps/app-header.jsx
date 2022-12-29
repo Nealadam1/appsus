@@ -7,7 +7,7 @@ export function AppHeader() {
     let { pathname } = useLocation()
     // console.log(pathname);
 
-    return <header className="app-header">
+    return <header className="app-header header">
         <Link className="img-container" to="/">
             <img className="logo" src="../assets/img/icon.png" alt="" />
         </Link>

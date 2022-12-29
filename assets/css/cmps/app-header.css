@@ -1,13 +1,17 @@
-header {
-    background: lightcyan;
-    border-bottom: 2px solid white;
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    height: 64px;
+    padding: 0 16px;
 }
 
-.app-header {
-    display: grid;
-    justify-content: space-between;
-    padding: 20px 0;
-    grid-template-columns: 80px 1fr 1fr 80px;
+.header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.87);
 }
 
 nav {
@@ -31,6 +35,6 @@ nav a.active {
 }
 
 .img-container {
-    width: 100px;
+    width: 200px;
     grid-column-start: 2;
 }

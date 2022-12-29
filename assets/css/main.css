@@ -31,7 +31,7 @@
 @import './appsCss/notes/notes-mainpage.css';
 @import './appsCss//notes//notes-edit.css';
 @import './appsCss/notes/note-nav.css';
-
+@import './appsCss/notes/add-note.css';
 
 /* mail css */
 @import './appsCss/mail/mail-index.css';
