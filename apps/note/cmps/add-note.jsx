@@ -21,6 +21,12 @@ export function AddNote() {
         console.log(note)
     }
 
+    function isVisible(){
+        const updatedNote=note.type=''
+        setNote(updatedNote)
+
+    }
+
 
     return <div className="add-note-container">
         <div className="add-note">
@@ -33,7 +39,7 @@ export function AddNote() {
 
         </div>
         <div className="edit-note-container">
-            {(note.type) && <DynamicCmpEdit type={note.type} info={note.info} style={note.style} />}
+            {(note.type) && <DynamicCmpEdit isVisible={isVisible} type={note.type} info={note.info} style={note.style} />}
         </div>
     </div>
 

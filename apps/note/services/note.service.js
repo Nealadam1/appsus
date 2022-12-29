@@ -53,7 +53,7 @@ function save(note) {
 }
 
 function getEmptyNote(type = '', isPinned = false, info = {url:'',title:'',txt:''
-,label:'', todos:[{id:null ,txt:''}]}){
+,label:'', todos:[{id:"BLxn86" ,txt:''}]}){
 return { type, isPinned, info }
 }
 
