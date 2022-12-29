@@ -13,6 +13,8 @@ import { MailCompose } from "./apps/mail/cmps/mail-compose.jsx"
 import { NoteIndex } from "./apps/note/views/note-index.jsx"
 import { UserMsg } from "./cmps/user-msg.jsx"
 import { LabelEdit } from "./cmps/label-edit.jsx"
+import { AddNote } from "./apps/note/cmps/add-note.jsx"
+import { DynamicCmpEdit } from "./apps/note/cmps/dynamic-cmps/dynamic-cmp-edit.jsx"
 
 
 
@@ -33,7 +35,10 @@ export function App() {
 
                     <Route path="/note" element={<NoteIndex />}>
                         <Route path="/note/labeledit" element={<LabelEdit />} />
+                        <Route path="/note/add" element={<DynamicCmpEdit />} />
+                        <Route path="/note/edit/:noteId"></Route>
                     </Route>
+                   
                 </Routes>
             </main>
             <UserMsg />

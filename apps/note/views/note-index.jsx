@@ -5,12 +5,14 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 import { LoadingSpinner } from "../../../cmps/loading-spinner.jsx"
 import { Labels } from "../../../cmps/labels.jsx"
 import { AddNote } from "../cmps/add-note.jsx"
+import { NoteEdit } from "../cmps/note-edit.jsx"
 
 const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
 export function NoteIndex() {
+    const [isEditModal,setEditModal] =useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     const [notes, setNotes] = useState([])
@@ -41,12 +43,12 @@ export function NoteIndex() {
                 showErrorMsg('Delete note failed')
             })
     }
-
-
-
-
-
-
+    function onCloseEdit(){
+        setEditModal(false)  
+    }
+    function onOpenEdit(){
+        setEditModal(true)  
+    }
     return <section className="notes-index">
         <section className="nav-container">
             <nav>
@@ -66,6 +68,7 @@ export function NoteIndex() {
             <AddNote/>
             {isLoading && <LoadingSpinner />}
             {!isLoading && <NoteList notes={notes} onRemoveNote={onRemoveNote} />}
+            {(isEditModal)&& <NoteEdit onCloseEdit={onCloseEdit}/>}
 
 
         </div>
