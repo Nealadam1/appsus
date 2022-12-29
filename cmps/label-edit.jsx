@@ -1,4 +1,4 @@
-import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+import { showErrorMsg, showSuccessMsg, emit, eventBusService } from "../services/event-bus.service.js"
 import { labelService } from "../services/label.service.js"
 import { utilService } from "../services/util.service.js"
 import { LabelList } from "./label-list.jsx"
@@ -16,10 +16,10 @@ export function LabelEdit() {
     console.log(labelsToEdit)
     useEffect(() => {
         loadLabels()
-        
+
     }, [])
 
-    
+
 
     function loadLabels() {
         labelService.query()
@@ -35,11 +35,12 @@ export function LabelEdit() {
                 const updatedLabels = labelsToEdit.filter(label => label.id !== labelId)
                 setLabelsToEdit(updatedLabels)
                 showSuccessMsg('Label Deleted')
+                eventBusService.emit('label-removed')
             })
             .catch((err) => {
                 console.log('Had issues removing', err)
                 showErrorMsg('Could not delete label')
-                
+
             })
     }
 
@@ -55,11 +56,12 @@ export function LabelEdit() {
     function onSaveLabels(ev) {
         if (ev) ev.preventDefault()
         labelsToEdit.forEach(labelToEdit => {
-            labelToEdit.id=null
-            labelService.save(labelToEdit).then(updatedLabel => console.log(updatedLabel))
+            labelToEdit.id = null
+            labelService.save(labelToEdit).then(() =>eventBusService.emit('label-saved'))
         })
         console.log('labels saved', labelsToEdit)
         showSuccessMsg('Labels Saved')
+        
         navigate('/note')
 
     }
@@ -68,9 +70,9 @@ export function LabelEdit() {
         ev.preventDefault()
         const newLabel = labelService.getEmptyLabel()
         newLabel.labelName = elInputRef.current.value
-        newLabel["id"]=utilService.makeId()
+        newLabel["id"] = utilService.makeId()
         setLabelsToEdit((prevLabels) => [...prevLabels, newLabel])
-        elInputRef.current.value=''
+        elInputRef.current.value = ''
     }
 
     return <div className="label-edit-container">

@@ -6,6 +6,7 @@ import { LoadingSpinner } from "../../../cmps/loading-spinner.jsx"
 import { Labels } from "../../../cmps/labels.jsx"
 import { AddNote } from "../cmps/add-note.jsx"
 import { NoteEdit } from "../cmps/note-edit.jsx"
+import { NoteNav } from "../cmps/note-nav.jsx"
 
 const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
@@ -19,7 +20,7 @@ export function NoteIndex() {
 
     useEffect(() => {
         loadNotes()
-    }, [])
+    }, [isEditModal])
 
     function loadNotes() {
         setIsLoading(true)
@@ -47,27 +48,16 @@ export function NoteIndex() {
         setEditModal(false)  
     }
     function onOpenEdit(){
+        console.log('yey')
         setEditModal(true)  
     }
     return <section className="notes-index">
-        <section className="nav-container">
-            <nav>
-                <NavLink to="">Notes</NavLink>
-                <Labels/>
-                <NavLink to="">Archive</NavLink>
-                <NavLink to="">Trash</NavLink>
-
-            </nav>
-            <div className="edit-label">
-                <Outlet/>
-            </div>
-
-        </section>
+        <NoteNav/>
         <div className="notes-container">
             <NoteFilter />
             <AddNote/>
             {isLoading && <LoadingSpinner />}
-            {!isLoading && <NoteList notes={notes} onRemoveNote={onRemoveNote} />}
+            {!isLoading && <NoteList onOpenEdit={onOpenEdit} notes={notes} onRemoveNote={onRemoveNote} />}
             {(isEditModal)&& <NoteEdit onCloseEdit={onCloseEdit}/>}
 
 

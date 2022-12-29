@@ -5,7 +5,7 @@ const Router = ReactRouterDOM.HashRouter;
 const { useState, useEffect, useRef } = React;
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM;
 
-export function NoteList({ notes, onRemoveNote }) {
+export function NoteList({ notes, onRemoveNote, onOpenEdit }) {
   const [sortedNotes, setSortedNotes] = useState(notes);
 
   const handleDragStart = (noteId) => (e) => {
@@ -54,14 +54,14 @@ export function NoteList({ notes, onRemoveNote }) {
           onDrag={handleDrag}
           onDragEnd={handleDragEnd}
         >
-          <NotePreview note={note} />
+          <NotePreview onOpenEdit={onOpenEdit} note={note} />
 
           <div className="note-btns">
             <button onClick={() => onRemoveNote(note.id)}>Delete Icon</button>
-            <button>Archive</button>
-            <button>Add Label</button>
-            <button>BackgroundColor</button>
-            <button>Pin</button>
+            <button onClick={()=> onArchive(note.id)}>Archive</button>
+            <button onClick={()=> onAddLabel(note.id)}>Add Label</button>
+            <button onClick={()=> onSetBackgroundColor(note.id)}>BackgroundColor</button>
+            <button onClick={()=> onPin(note.id)}>Pin</button>
           </div>
         </div>
       ))}

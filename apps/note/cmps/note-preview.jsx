@@ -6,9 +6,9 @@ const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRo
 
 
 
-export function NotePreview({note}) {
+export function NotePreview({note,onOpenEdit}) {
     console.log('note from preview:', note)
-    return <Link to={`/note/edit/${note.id}`}>
+    return <Link onClick={()=>onOpenEdit()} to={`/note/edit/${note.id}`}>
         <article className="note-preview">
             <DynamicCmp type={note.type} info={note.info} style={note.style} />
         </article>

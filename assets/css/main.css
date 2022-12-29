@@ -30,6 +30,7 @@
 /* notes css */
 @import './appsCss/notes/notes-mainpage.css';
 @import './appsCss//notes//notes-edit.css';
+@import './appsCss/notes/note-nav.css';
 
 
 /* mail css */

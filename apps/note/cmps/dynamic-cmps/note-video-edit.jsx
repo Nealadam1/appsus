@@ -4,7 +4,7 @@ const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
-export function NoteVideoEdit() {
+export function NoteVideoEdit({isVisible}) {
   const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
   const navigate = useNavigate()
   const { noteId } = useParams()
@@ -42,7 +42,7 @@ export function NoteVideoEdit() {
 
 
   return <div>
-    <form onSubmit={onSaveNote}>
+    <div >
       <input type="text"
         name="title"
         placeholder="Enter Title"
@@ -55,10 +55,10 @@ export function NoteVideoEdit() {
         value={noteToEdit.info.url}
         onChange={handleChange} />
       <div>
-        <button>{noteToEdit.id ? 'Save' : 'Create'}</button>
-        <Link to="/note">Close</Link>
+        <button onSubmit={onSaveNote}>{noteToEdit.id ? 'Save' : 'Create'}</button>
+        <p onClick={() => isVisible()} >Close</p>
       </div>
-    </form>
+    </div>
 
   </div>
 }
