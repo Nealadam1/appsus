@@ -25,7 +25,7 @@ export function MailAdd() {
         <div className="text-area">
             <div className="msg-header">
                 <span>New Message</span>
-                <button onClick={() => navigate('/mail')}>X</button>
+                <button onClick={() => navigate('/mail')}><i className="fa-solid fa-xmark"></i></button>
             </div>
             <input type="email"
                 placeholder="Recipients"
@@ -43,7 +43,7 @@ export function MailAdd() {
                 cols="30"
                 rows="10"
                 value={newMail.body}
-                onChange={handleChange}></textarea>
+                onChange={handleChange}><pre>{newMail.body}</pre></textarea>
 
             <div>
                 <button type="submit">Send</button>

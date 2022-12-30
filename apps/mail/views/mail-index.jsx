@@ -6,7 +6,6 @@ import { MailFilter } from "../cmps/mail-filter.jsx"
 import { LoadingSpinner } from "../../../cmps/loading-spinner.jsx"
 import { MailFolderList } from "../cmps/mail-folder-list.jsx"
 import { mailService } from "../services/mail.service.js"
-import { MailCompose } from "../cmps/mail-compose.jsx"
 
 export function MailIndex() {
     const [mails, setMails] = useState([])
@@ -47,11 +46,10 @@ export function MailIndex() {
     return <div className="main-container">
 
         <div className="compose-email">
-            <Outlet />
             <MailFolderList displayDeleted={displayDeleted} displayStarred={displayStarred} displaySent={displaySent} />
+            <Outlet />
         </div>
 
-        <MailCompose />
 
         <MailFilter setFilter={setFilter} />
         <MailList mails={mails} isRenderDeleted={renderDeleted} displayStarred={renderStarred} displaySent={renderSent} />

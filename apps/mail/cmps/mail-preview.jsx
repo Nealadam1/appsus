@@ -11,6 +11,7 @@ export function MailPreview({ mail, onMailRead, isRenderDeleted, displayStarred,
     const { id } = useParams()
     let readDynmClass = mail.isRead ? 'read-mail' : 'unread-mail'
     let staredDynmClass = staredMsg ? 'favorite' : 'normal'
+    let isFavorite = staredMsg ? 'fa-solid fa-star' : 'fa-regular fa-star'
 
     useEffect(() => {
         getWindowSize()
@@ -27,8 +28,13 @@ export function MailPreview({ mail, onMailRead, isRenderDeleted, displayStarred,
     }
 
     function shortBody(textBody) {
-        if (textBody.length > windowWidth / 17) return textBody.substring(0, windowWidth / 17) + '...'
-        else return textBody.substring(0, textBody.length) + '...'
+        if (windowWidth > 1000) {
+            if (textBody.length > windowWidth / 20) return textBody.substring(0, windowWidth / 20) + '...'
+            else return textBody.substring(0, textBody.length) + '...'
+        } else {
+            if (textBody.length > windowWidth / 40) return textBody.substring(0, windowWidth / 40) + '...'
+            else return textBody.substring(0, textBody.length) + '...'
+        }
     }
 
     function shortEmail(mail) {
@@ -100,7 +106,7 @@ export function MailPreview({ mail, onMailRead, isRenderDeleted, displayStarred,
 
 
             <td className="left-side">
-                <button className="fav-btn" onClick={(ev) => starMsg(ev, mail.id)}>Star</button>
+                <button className="fav-btn" onClick={(ev) => starMsg(ev, mail.id)}><i className={isFavorite}></i></button>
                 {/* <button onClick={(ev) => selectMsg(ev, mail.id)}>select</button> */}
                 <p>{mail.subject}</p>
 
@@ -121,34 +127,33 @@ export function MailPreview({ mail, onMailRead, isRenderDeleted, displayStarred,
 
                     <div className="mail-btn-container">
 
-                        <div>
+                        <div className="mail-header">
                             <h2>{mail.subject}</h2>
-                            <h3>{mail.fromName}</h3>
-                            <h4>&#60;{mail.email}&#62;</h4>
+                            <h4><span className="name-display">{mail.fromName}</span> &#60;{mail.email}&#62;</h4>
                         </div>
 
                         <div className="btn-spacer">
-                            <button onClick={() => {
+                            <button title="Delete mail" onClick={() => {
                                 onDeleteMail()
                                 setIsExpanded(!isExpanded)
                             }}><i className="fa-solid fa-trash"></i></button>
 
-                            <button onClick={() => {
+                            <button title="Unread mail" onClick={() => {
                                 setIsExpanded(!isExpanded)
                                 unRead(mail.id)
-                            }}>UnRead</button>
+                            }}><i className="fa-solid fa-envelope"></i></button>
 
-                            <button onClick={expandMail}>Expand</button>
+                            {/* <button onClick={expandMail}>Expand</button> */}
 
                         </div>
 
                     </div>
 
-                    <div className="">{mail.body}</div>
+                    <div className=""><pre>{mail.body}</pre></div>
 
                 </div>
 
             </td>
         </tr>
-    </Fragment>
+    </Fragment >
 }

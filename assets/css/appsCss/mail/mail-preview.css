@@ -31,11 +31,17 @@ tr:hover {
 .mail-btn-container {
     display: flex;
     justify-content: space-between;
-    margin: 15px 20px;
+    margin: 40px 15px 25px 0;
 }
 
 .mail-btn-container h2 {
     align-self: center;
+    margin-bottom: 15px;
+}
+
+.mail-btn-container h4 .name-display {
+    color: black;
+    font-weight: bold;
 }
 
 .mail-btn-container h4 {
@@ -45,10 +51,17 @@ tr:hover {
 
 .btn-spacer button {
     margin: 0 5px;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 100%;
     cursor: pointer;
+    font-size: 1.2em;
+}
+
+.btn-spacer button:hover {
+    background-color: rgb(255, 255, 255);
+    transition: background-color .3s;
 }
 
 .hidden-container {
@@ -56,6 +69,19 @@ tr:hover {
     cursor: default;
 }
 
+.left-side button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.3rem;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
 .favorite .fav-btn {
-    background-color: aqua;
+    border: none;
+    color: rgb(255, 187, 0);
+}
+
+.mail-header {
+    max-width: 70%;
 }

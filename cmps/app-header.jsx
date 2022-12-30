@@ -1,7 +1,6 @@
 const { useParams, useNavigate, Link, NavLink, useLocation } = ReactRouterDOM
 
 import { MailFilter } from "../apps/mail/cmps/mail-filter.jsx";
-import { MailSideMenu } from "../apps/mail/cmps/mail-side-menu.jsx"
 
 export function AppHeader() {
     let { pathname } = useLocation()

@@ -1,5 +1,6 @@
 
 const { useState, useEffect, Fragment } = React
+import { MailCompose } from "../cmps/mail-compose.jsx"
 
 import ReactLogo from ''
 export function MailFolderList({ displayDeleted, displayStarred, displaySent }) {
@@ -7,10 +8,22 @@ export function MailFolderList({ displayDeleted, displayStarred, displaySent }) 
     const [activeStar, setActiveStar] = useState(null)
     const [activeSent, setActiveSent] = useState(null)
 
-    return <div>
+    return <section className="nav-container">
+        <aside>
+            <div>
+                <MailCompose />
+            </div>
+            <div>
+                <button className={activeDeleted ? 'active' : null} onClick={() => { displayDeleted(true); setActiveDeleted(!activeDeleted) }}><i className="fa-solid fa-trash"></i> <span>Trash</span></button>
+            </div>
 
-        <button className={activeDeleted ? 'active' : null} onClick={() => { displayDeleted(true); setActiveDeleted(!activeDeleted) }}><i className="fa-solid fa-trash"></i></button>
-        <button className={activeStar ? 'active' : null} onClick={() => { displayStarred(true); setActiveStar(!activeStar) }}><i className="fa-solid fa-star"></i></button>
-        <button className={activeSent ? 'active' : null} onClick={() => { displaySent(true); setActiveSent(!activeSent) }}>Sent Mail</button>
-    </div>
+            <div>
+                <button className={(activeStar ? 'active' : null) + ' star'} onClick={() => { displayStarred(true); setActiveStar(!activeStar) }}><i className="fa-solid fa-star"></i> <span>Starred</span></button>
+            </div>
+
+            <div>
+                <button className={activeSent ? 'active' : null} onClick={() => { displaySent(true); setActiveSent(!activeSent) }}><i className="fa-solid fa-paper-plane"></i> <span>Sent</span></button>
+            </div>
+        </aside>
+    </section>
 }

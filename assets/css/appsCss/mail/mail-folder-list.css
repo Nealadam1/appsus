@@ -1,3 +1,31 @@
-.active {
-    color: aqua;
+aside button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    display: block;
+    height: 48px;
+    width: 240px;
+    text-align: left;
+    line-height: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    /* color: #5f6368; */
+    text-decoration: none;
+    padding: 0 16px;
+    cursor: pointer;
+
+}
+
+button.active {
+    color: #1976d2;
+    border-left: 4px solid #1976d2;
+}
+
+.compose-link-container {
+    margin-top: 4px;
+    border-bottom: 1px rgba(0, 0, 0, 0.219) solid;
+}
+
+.compose-link-container a {
+    color: black;
 }

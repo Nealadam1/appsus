@@ -112,10 +112,11 @@ function _demoData() {
 
     if (!emails || !emails.length) {
         emails = []
-        emails.push(_createMail('Miss you!', 'fa@gaeaf.com', 'Would love to catch up sometimes', false, false, 1672222756881, loggedinUser.email, 'eden'))
-        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1551133930594, loggedinUser.email, 'eden'))
+        emails.push(_createMail('Miss you!', 'noreply@github.com', '[Nealadam1/appsus] Run cancelled: pages build and deployment - main (76abc65)', false, false, 1682222756881, loggedinUser.email, 'GitHub', false))
+        emails.push(_createMail('Miss you!', 'fa@gaeaf.com', 'Would love to catch up sometimes', false, false, 1672222756881, loggedinUser.email, 'eden', false))
+        emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1551133930594, loggedinUser.email, 'Steam Store'))
         emails.push(_createMail('Sumalian proplayer !', 'sumalilandplayerProproPro@gmail.com', 'Hello am 48 year man from somalia. Sorry for my bed england. I selled my wife for internet connection for play "conter strik" and i want to become the goodest player like you I play with 400 ping on brazil and i am global elite 2. pls no copy pasterio my story',
-            false, false, 1581133930594, loggedinUser.email, 'eden'))
+            false, false, 1581133930594, loggedinUser.email, 'Sumaliaa for ever'))
         emails.push(_createMail('Nigirian Scammer', 'eahaow@gmail.com', `Hello,
             With all due respect, I want you to read my letter with one mind and help me. I am Miss Caroline Freund, The only daughter of late Mr. and Mrs. Freund,
             My Late father was a very wealthy cocoa dealer in Abidjan Côte d'Ivoire. before he was poisoned to death by his business associates on one of their outing to discuss on a business deal.
@@ -136,7 +137,7 @@ function _demoData() {
             be coming to your country immediately after you have receive the money so that I can continue my education while this money will be invested by you.
             Thanks and God Bless.
             Best regards,
-            Miss Caroline Freund.`, false, false, 1551133930594, loggedinUser.email, 'eden'))
+            Miss Caroline Freund.`, false, false, 1551133930594, loggedinUser.email, 'Uvuvwevwevwe Onyetenyevwe Ugwemubwem Ossas'))
 
         // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))
         // emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1451133930594, loggedinUser.email, 'eden'))

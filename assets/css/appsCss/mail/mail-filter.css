@@ -1,0 +1,19 @@
+.filter-bar {
+    position: relative;
+    background-color: transparent;
+    margin: 5px 15px;
+}
+
+#filterMail {
+    background-color: rgb(230, 230, 230);
+    padding: 0;
+    width: 100%;
+    border: none;
+    height: 45px;
+    border-radius: 6px;
+}
+
+#filterMail::placeholder {
+    font-size: 1rem;
+    padding: 15px;
+}

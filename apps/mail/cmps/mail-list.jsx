@@ -29,15 +29,10 @@ export function MailList({ mails, isRenderDeleted, displayStarred, displaySent }
 
 
     return <section className="mail-container">
-        <div className="btn-container">a</div>
-        Unread mails: {unreadCount}
+        <div className="btn-container"></div>
+        <div className="inbox-unread"><i className="fa-solid fa-inbox"></i> <span className="unread-mail-count">{unreadCount}</span> </div>
         <table border="0" cellSpacing="0">
             <thead>
-                <tr>
-                    <th>Starred</th>
-                    <th>Vendor</th>
-                    <th>Speed</th>
-                </tr>
             </thead>
             <tbody>
 

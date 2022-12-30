@@ -1,9 +1,12 @@
 .compose-container {
     position: fixed;
     bottom: 0;
-    background-color: gray;
-    min-width: 20vh;
-    min-height: 20vh
+    right: 35px;
+    background-color: rgb(240, 240, 240);
+    min-width: 50vh;
+    min-height: 50vh;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid gray;
 }
 
 .text-area {
@@ -18,5 +21,50 @@
 
 .text-area .msg-header {
     justify-content: space-between;
+    padding: 10px 20px;
+    background-color: rgb(207, 207, 207);
+    border-radius: 10px 10px 0 0;
 
+}
+
+.text-area .msg-header button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.text-area input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgb(156, 156, 156);
+    margin: 2px 10px;
+    height: 35px;
+    font-size: 1rem;
+}
+
+input[type=text] {
+    padding-left: 10px;
+}
+
+textarea {
+    min-height: 30vh;
+    margin: 0 10px;
+    background-color: transparent;
+    border: none;
+}
+
+.text-area div:last-child {
+    margin: 10px;
+    height: 40px;
+}
+
+.text-area div:last-child button {
+    width: 30%;
+    border: none;
+    background-color: #2085eb;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
 }

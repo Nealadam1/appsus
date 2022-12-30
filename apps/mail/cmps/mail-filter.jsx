@@ -53,6 +53,7 @@ export function MailFilter({ setFilter }) {
         <input type="text"
             id="filterMail"
             name="mail"
+
             placeholder="Search mail"
             list="filter-options"
             onChange={utilService.debounce(handleChange)}

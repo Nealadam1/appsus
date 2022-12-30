@@ -1,0 +1,8 @@
+.compose-link-container {
+    margin-top: 4px;
+    border-bottom: 1px rgba(0, 0, 0, 0.219) solid;
+}
+
+.compose-link-container a {
+    color: black;
+}

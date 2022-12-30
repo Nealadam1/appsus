@@ -1,16 +1,20 @@
 .main-container {
-    height: 100%;
+    /* height: 90vh; */
     display: grid;
-    grid-template-columns: 80px 1fr 80px;
+    grid-template-columns: 250px 1fr 80px;
+    grid-template-rows: 55px 1fr;
+    /* margin-top: 10px; */
 }
 
 .mail-container {
     background-color: rgb(241, 241, 241);
     border-radius: 10px;
-    margin: 15px;
-    height: 70vh;
+    margin: 0 15px;
+    max-height: 80vh;
     grid-column-start: 2;
+    grid-row-start: 3;
     overflow-y: scroll;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
 }
 
 .mail {
@@ -22,10 +26,18 @@
     width: 100%;
 }
 
+
 .filter-bar {
+    grid-row-start: 1;
     grid-column-start: 2;
 }
 
 .mail-content {
     display: flex;
+}
+
+.inbox-unread {
+    padding: 10px 21px;
+    display: block;
+    border-bottom: 1px solid rgb(119, 119, 119);
 }
