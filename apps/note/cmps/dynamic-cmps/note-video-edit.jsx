@@ -41,7 +41,7 @@ export function NoteVideoEdit({isVisible}) {
   }
 
 
-  return <div>
+  return <div className="edit-note-container">
     <div >
       <input type="text"
         name="title"

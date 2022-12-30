@@ -21,8 +21,8 @@ export function AddNote() {
         console.log(note)
     }
 
-    function isVisible(){
-        const updatedNote=note.type=''
+    function isVisible() {
+        const updatedNote = note.type = ''
         setNote(updatedNote)
 
     }
@@ -30,15 +30,18 @@ export function AddNote() {
 
     return <div className="add-note-container">
         <div className="add-note">
-            <div onClick={(ev) => setNoteType('note-txt',ev)}>
+            <div onClick={(ev) => setNoteType('note-txt', ev)}>
                 Enter Text...
-                <i onClick={(ev) => setNoteType('note-img', ev)}>IMG</i>
-                <i onClick={(ev) => setNoteType('note-todos', ev)}>TODO</i>
-                <i onClick={(ev) => setNoteType('note-video', ev)}>YT</i>
+
+            </div>
+            <div>
+                <i className="fa-solid fa-image" onClick={(ev) => setNoteType('note-img', ev)}></i>
+                <i className="fa-solid fa-list-check" onClick={(ev) => setNoteType('note-todos', ev)}></i>
+                <i className="fa-brands fa-youtube" onClick={(ev) => setNoteType('note-video', ev)}></i>
             </div>
 
         </div>
-        <div className="edit-note-container">
+        <div>
             {(note.type) && <DynamicCmpEdit isVisible={isVisible} type={note.type} info={note.info} style={note.style} />}
         </div>
     </div>

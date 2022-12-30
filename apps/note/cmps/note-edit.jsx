@@ -29,7 +29,7 @@ export function NoteEdit({onCloseEdit}) {
         onCloseEdit()
     }
 
-    return <div className="note-edit-container">hello from eidit
+    return <div className="note-edit-container">
         <DynamicCmpEdit isVisible={updateVisible}noteId={noteId} type={noteToEdit.type} info={noteToEdit.info} style={noteToEdit.style} />
     </div>
 

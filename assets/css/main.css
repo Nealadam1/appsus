@@ -25,6 +25,7 @@
 @import './cmps/label-edit.css';
 
 
+
 /* @import './apps/mail/cmps/mail-list.css'; */
 
 /* notes css */
@@ -32,6 +33,7 @@
 @import './appsCss//notes//notes-edit.css';
 @import './appsCss/notes/note-nav.css';
 @import './appsCss/notes/add-note.css';
+@import './appsCss/notes/note-btn-todo.css';
 
 /* mail css */
 @import './appsCss/mail/mail-index.css';

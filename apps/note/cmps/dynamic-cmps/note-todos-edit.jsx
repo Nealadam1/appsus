@@ -69,7 +69,7 @@ export function NoteTodosEdit({isVisible}) {
     }
 
 
-    return <div>
+    return <div className="edit-note-container">
         <div>
             <input type="text"
                 name="label"
@@ -78,7 +78,7 @@ export function NoteTodosEdit({isVisible}) {
                 onChange={handleChange} />
             <hr />
             {todos.map((todo, idx) => {
-                return <div key={idx}>
+                return <div className="todo-input" key={idx}>
                     < input type="text"
                         name="txt"
                         placeholder="todo"
@@ -86,16 +86,17 @@ export function NoteTodosEdit({isVisible}) {
                         value={todo.txt}
                         onChange={handleChange}
                     />
-                    <button onClick={(ev) => onRemoveTodo(todo.id, ev)}>X</button>
+                    <i className="fa-solid fa-trash" onClick={(ev) => onRemoveTodo(todo.id, ev)}></i>
                 </div>
             })}
             <hr />
             <div>
-                <p onClick={() => onaddTodo()}>List Todo +</p>
+                <p className="list-todo"onClick={() => onaddTodo()}>List Todo +</p>
             </div>
-            <div>
-                <button onClick={onSaveNote} >{noteToEdit.id ? 'Save' : 'Create'}</button>
+            <div className="save-btns">
                 <p onClick={()=>isVisible()}>Close</p>
+                <p className="save" onClick={onSaveNote} >{noteToEdit.id ? 'Save' : 'Create'}</p>
+                
             </div>
         </div>
 

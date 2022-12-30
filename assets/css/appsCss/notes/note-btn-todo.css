@@ -1,0 +1,39 @@
+.color-menu {
+    appearance: none;
+    background: whitesmoke;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    height: 30px;
+    width: 38px;
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    right: 60px;
+    opacity: 0;
+}
+
+
+.color-menu option[value="#ffe666"] {
+    font-size: 1rem;
+    background-color: #ffe666;
+}
+.color-menu option[value="#f5c27d"] {
+    font-size: 1rem;
+    background-color: #f5c27d;
+}
+.color-menu option[value="#f6cebf"] {
+    font-size: 1rem;
+    background-color: #f6cebf;
+}
+.color-menu option[value="#e3b7d2"] {
+    font-size: 1rem;
+    background-color: #e3b7d2;
+}
+.color-menu option[value="#bfe7f6"] {
+    font-size: 1rem;
+    background-color: #bfe7f6;
+}
+
+
+
