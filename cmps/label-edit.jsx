@@ -77,10 +77,10 @@ export function LabelEdit() {
 
     return <div className="label-edit-container">
         <h2>Label Editor</h2>
-        <form onSubmit={onSaveLabels}>
+        <form >
             {labelsToEdit.map(labelToEdit => {
                 return <div key={labelToEdit.id} className="label-edit-item">
-                    <input type="color"
+                    <input className="color-input" type="color"
                         name="color"
                         id={labelToEdit.id}
                         placeholder="Enter label name"
@@ -88,7 +88,7 @@ export function LabelEdit() {
                         onChange={handleChange}
 
                     />
-                    <input type="text"
+                    <input className="text-input" type="text"
                         name="labelName"
                         id={labelToEdit.id}
                         placeholder="Enter label name"
@@ -96,21 +96,21 @@ export function LabelEdit() {
                         onChange={handleChange}
 
                     />
-                    <button onClick={(ev) => onRemoveLabel(labelToEdit.id, ev)}>X</button>
+                    <i className="fa-solid fa-trash"onClick={(ev) => onRemoveLabel(labelToEdit.id, ev)}></i>
                 </div>
             })}
 
             <hr />
-            <input type="text"
+            <input className="text-input" type="text"
                 name="labelName"
                 placeholder="Enter label name"
                 onChange={handleChange}
                 ref={elInputRef}
 
             />
-            <button onClick={onAddLabel}>+</button>
+            <i className="fa-solid fa-plus"onClick={onAddLabel}></i>
             <hr />
-            <button>Done</button>
+            <p className="done" onClick={onSaveLabels}>Done</p>
         </form>
     </div>
 

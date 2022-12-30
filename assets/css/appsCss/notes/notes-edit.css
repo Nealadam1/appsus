@@ -1,9 +1,69 @@
 .note-edit-container {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 20vh;
+    left: 25vw;
 
-    background-color: blue;
-    height: 300px;
+    width: 30vw;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 30px;
+    padding: 20px;
+    
+}
 
+.note-edit-container .todo-input {
+    position: relative;
+}
+
+.note-edit-container input {
+    background-color: transparent;
+    margin-bottom: 10px;
+    height: 20px;
+    padding-left: 10px;
+    border: solid 0.3px lightgray;
+    border-radius: 8px;
+    color: #212121;
+    font-size: 1rem;
+    outline: none;
+    width: 80%;
+
+}
+
+.note-edit-container .todo-input i {
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    cursor: pointer;
+}
+.save-btns{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.note-edit-container .save-btns p {
+    font-size: 1rem;
+    padding: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: beige;
+    margin:5px
+
+}
+.note-edit-container .save-btns .save {
+   background-color: rgb(36, 106, 236);
+
+}
+.note-edit-container textarea{
+    resize: none;
+    font-family: roboto;
+    border-radius: 8px;
+    border: solid 0.3px lightgray
+}
+
+.note-edit-container .list-todo:hover{
+    color: lightblue;
+    cursor: pointer;
+   
 }

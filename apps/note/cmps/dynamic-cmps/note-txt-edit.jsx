@@ -5,12 +5,13 @@ const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
 export function NoteTxtEdit({ isVisible, noteId }) {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
     const navigate = useNavigate()
-    
-
     useEffect(() => {
         if (!noteId) return
+        getWindowSize()
+        window.addEventListener('resize', () => { setWindowWidth(getWindowSize()) })
         loadNote()
     }, [])
 
@@ -39,9 +40,12 @@ export function NoteTxtEdit({ isVisible, noteId }) {
             isVisible()
         })
     }
+    function getWindowSize() {
+        const { innerWidth } = window;
+        return innerWidth
+    }
 
-
-    return <div>
+    return <div className="edit-note-container">
         <div >
             <input type="text"
                 name="title"
@@ -51,7 +55,7 @@ export function NoteTxtEdit({ isVisible, noteId }) {
             <hr />
             <textarea
                 name="txt"
-                cols="30"
+                cols={windowWidth / 25}
                 rows="10"
                 placeholder="Enter Text"
                 value={noteToEdit.info.txt}
@@ -60,9 +64,10 @@ export function NoteTxtEdit({ isVisible, noteId }) {
                     {noteToEdit.info.txt}
                 </pre>
             </textarea>
-            <div>
-                <button onClick={onSaveNote}>{noteToEdit.id ? 'Save' : 'Create'}</button>
+            <div className="save-btns">
                 <p onClick={() => isVisible()} >Close</p>
+                <p className="save" onClick={onSaveNote}>{noteToEdit.id ? 'Save' : 'Create'}</p>
+
             </div>
         </div>
 

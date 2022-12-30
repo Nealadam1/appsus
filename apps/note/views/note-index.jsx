@@ -13,8 +13,8 @@ const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
 export function NoteIndex() {
-    const navigate=useNavigate()
-    const [isEditModal,setEditModal] =useState(false)
+    const navigate = useNavigate()
+    const [isEditModal, setEditModal] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     const [notes, setNotes] = useState([])
@@ -34,33 +34,57 @@ export function NoteIndex() {
     }
 
     function onRemoveNote(noteId) {
-        noteService.remove(noteId)
-            .then(() => {
+        console.log(noteId)
+        noteService.get(noteId)
+            .then((note) => {
+                if (note.isArchived) note.isArchived=false
+                note.isTrash = true
+                noteService.save(note)
                 const updatedNotes = notes.filter(note => note.id !== noteId)
+                console.log(note)
                 setNotes(updatedNotes)
-                showSuccessMsg('Note deleted')
+                showSuccessMsg('Note moved to Trash')
 
             })
             .catch((err) => {
                 showErrorMsg('Delete note failed')
             })
     }
-    function onCloseEdit(){
-        navigate('/note')
-        setEditModal(false)  
+
+    function onArchiveNote(noteId) {
+        console.log(noteId)
+        noteService.get(noteId)
+            .then((note) => {
+                if(note.isTrash) note.isTrash=false
+                note.isArchived = true
+                noteService.save(note)
+                const updatedNotes = notes.filter(note => note.id !== noteId)
+                console.log(note)
+                setNotes(updatedNotes)
+                showSuccessMsg('Note moved to Archive')
+
+            })
+            .catch((err) => {
+                showErrorMsg('Move to Archive failed')
+            })
     }
-    function onOpenEdit(){
+
+    function onCloseEdit() {
+        navigate('/note')
+        setEditModal(false)
+    }
+    function onOpenEdit() {
         console.log('yey')
-        setEditModal(true)  
+        setEditModal(true)
     }
     return <section className="notes-index">
-        <NoteNav/>
+        <NoteNav />
         <div className="notes-container">
             <NoteFilter />
-            <AddNote/>
+            <AddNote />
             {isLoading && <LoadingSpinner />}
-            {!isLoading && <NoteList onOpenEdit={onOpenEdit} notes={notes} onRemoveNote={onRemoveNote} />}
-            {(isEditModal)&& <NoteEdit onCloseEdit={onCloseEdit}/>}
+            {!isLoading && <NoteList onOpenEdit={onOpenEdit} notes={notes} onRemoveNote={onRemoveNote} onArchiveNote={onArchiveNote} />}
+            {(isEditModal) && <NoteEdit onCloseEdit={onCloseEdit} />}
 
 
         </div>

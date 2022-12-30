@@ -1,12 +1,14 @@
 import { noteService } from "../services/note.service.js";
+import { BtnSetColor } from "./btn-menus-cmps/note-btn-todo.jsx";
 import { NotePreview } from "./note-preview.jsx";
 
 const Router = ReactRouterDOM.HashRouter;
 const { useState, useEffect, useRef } = React;
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM;
 
-export function NoteList({ notes, onRemoveNote, onOpenEdit }) {
-  const [sortedNotes, setSortedNotes] = useState(notes);
+export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote }) {
+  const [sortedNotes, setSortedNotes] = useState(notes)
+  const [toggleColorEdit, setColorEdit] = useState(false)
 
   const handleDragStart = (noteId) => (e) => {
     e.dataTransfer.setData("noteId", noteId);
@@ -34,6 +36,11 @@ export function NoteList({ notes, onRemoveNote, onOpenEdit }) {
     setSortedNotes([...sortedNotes]);
   };
 
+  function onSetBackgroundColor(noteId) {
+    setColorEdit({ toggle: !toggleColorEdit.toggle, id: noteId })
+    console.log(toggleColorEdit)
+  }
+
   return (
     <div
       className="note-list"
@@ -46,7 +53,7 @@ export function NoteList({ notes, onRemoveNote, onOpenEdit }) {
       onDrop={handleDrop}
     >
       {sortedNotes.map((note) => (
-        <div
+        <div style={{ backgroundColor: note.style }}
           className="note"
           key={note.id}
           draggable
@@ -57,14 +64,18 @@ export function NoteList({ notes, onRemoveNote, onOpenEdit }) {
           <NotePreview onOpenEdit={onOpenEdit} note={note} />
 
           <div className="note-btns">
-            <button onClick={() => onRemoveNote(note.id)}>Delete Icon</button>
-            <button onClick={()=> onArchive(note.id)}>Archive</button>
-            <button onClick={()=> onAddLabel(note.id)}>Add Label</button>
-            <button onClick={()=> onSetBackgroundColor(note.id)}>BackgroundColor</button>
-            <button onClick={()=> onPin(note.id)}>Pin</button>
+            <i className="fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></i>
+            <i className="fa-solid fa-box-archive" onClick={() => onArchiveNote(note.id)}></i>
+            <i className="fa-solid fa-tag" onClick={() => onAddLabel(note.id)}></i>
+            <i className="fa-solid fa-palette" onClick={() => onSetBackgroundColor(note.id)}>
+              <BtnSetColor onSetBackgroundColor={onSetBackgroundColor} note={note} />
+              </i>
+            <i className="fa-solid fa-thumbtack" onClick={() => onPinNote(note.id)}></i>
           </div>
+
         </div>
       ))}
+
     </div>
   );
 }
