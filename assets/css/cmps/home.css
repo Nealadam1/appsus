@@ -1,0 +1,10 @@
+.svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+.img-container img {
+    width: 100%;
+}

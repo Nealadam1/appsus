@@ -61,6 +61,12 @@ nav a.active {
     transition: background-color .3s;
 }
 
+.amogus {
+    font-family: amongus;
+    font-size: 2.5rem;
+}
+
+
 .side-menu-toggle:active {
     position: fixed;
     font-size: 1.5rem;
