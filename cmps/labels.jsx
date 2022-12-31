@@ -1,6 +1,7 @@
 import { labelService } from "../services/label.service.js"
 import { LabelList } from "./label-list.jsx"
 import { eventBusService } from "../services/event-bus.service.js"
+import { noteService } from "../apps/note/services/note.service.js"
 
 const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
@@ -35,6 +36,7 @@ export function Labels({onSetFilter}) {
 
     function handleLabelSaved() {
         loadLabels()
+        onSetFilter(noteService.getDefaultFilter())
     }
 
 
@@ -46,7 +48,9 @@ export function Labels({onSetFilter}) {
     }
     return <div className='label-container'>
         {(labels) && <LabelList onSetFilter={onSetFilter} labels={labels} />}
-        <Link to="/note/labeledit">Edit Labels</Link>
+        
+        <Link to="/note/labeledit"><i className="fa-solid fa-tags"> </i><span>Edit Labels</span></Link>
+       
 
     </div>
 }

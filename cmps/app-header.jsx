@@ -10,7 +10,7 @@ export function AppHeader() {
             <img className="logo" src="../assets/img/testaaaa.jpg" alt="img" />
         </Link>
         <nav>
-            <button className="app-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}><i class="fa-solid fa-square-caret-down"></i></button>
+            <button className="app-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}><i className="fa-solid fa-square-caret-down"></i></button>
 
             <div className={(!isMenuOpen ? "closed" : "open") + " link-container"}>
                 <NavLink to="/" onClick={() => setIsMenuOpen(!isMenuOpen)}>Home</NavLink>

@@ -7,7 +7,7 @@ const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRo
 
 export function BtnLabels({ note, onToggleLabels }) {
     const [labels, setLabels] = useState([])
-    const [ischecked,setChecked]=useState(false)
+    const [ischecked, setChecked] = useState(false)
     console.log(note)
     console.log(labels)
 
@@ -42,6 +42,8 @@ export function BtnLabels({ note, onToggleLabels }) {
 
     }
 
+    console.log(labels)
+
 
 
     return <div>
@@ -49,7 +51,7 @@ export function BtnLabels({ note, onToggleLabels }) {
             {labels.map((label) => (
                 <div className="label" key={label.id}>
                     <input
-                    checked={note.labels.find(labelitem=> labelitem===label.labelName)}
+                        checked={note.labels.find(labelitem => labelitem === label.labelName)}
                         id={label.id}
                         type="checkbox"
                         value={label.labelName}
