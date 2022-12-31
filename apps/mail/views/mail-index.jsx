@@ -13,6 +13,7 @@ export function MailIndex() {
     const [renderDeleted, setRenderDeleted] = useState(null)
     const [renderStarred, setRenderStarred] = useState(null)
     const [renderSent, setRenderSent] = useState(null)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     useEffect(() => {
         loadMails(filterBy)
@@ -44,9 +45,10 @@ export function MailIndex() {
 
     if (!mails) return <LoadingSpinner />
     return <div className="main-container">
-
+        <button className="side-menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}><i className="fa-solid fa-bars"></i></button>
         <div className="compose-email">
-            <MailFolderList displayDeleted={displayDeleted} displayStarred={displayStarred} displaySent={displaySent} />
+            {/* My enemy >:( */}
+            <MailFolderList className={isMenuOpen ? "open" : ""} displayDeleted={displayDeleted} displayStarred={displayStarred} displaySent={displaySent} />
             <Outlet />
         </div>
 

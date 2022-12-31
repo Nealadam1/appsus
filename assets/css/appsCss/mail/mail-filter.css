@@ -11,11 +11,17 @@
     border: none;
     height: 45px;
     border-radius: 6px;
+    font-size: 1rem;
 }
+
+/* #filterMail[type=text] {
+    padding-left: 45px;
+    padding-top: 2px;
+    font-size: 1rem;
+} */
 
 #filterMail::placeholder {
     font-size: 1rem;
-    padding: 15px;
 }
 
 @media (min-width:320px) {

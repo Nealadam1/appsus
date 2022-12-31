@@ -19,6 +19,7 @@ export function NoteIndex() {
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     const [notes, setNotes] = useState([])
     const [isSaveModal, setSaveModal] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 
     useEffect(() => {
@@ -48,7 +49,7 @@ export function NoteIndex() {
                 const updatedNotes = notes.filter(note => note.id !== noteId)
                 console.log(note)
                 setNotes(updatedNotes)
-                showSuccessMsg( note.isTrash? 'Note moved to Trash': 'Removed from Trash')
+                showSuccessMsg(note.isTrash ? 'Note moved to Trash' : 'Removed from Trash')
 
             })
             .catch((err) => {
@@ -69,7 +70,7 @@ export function NoteIndex() {
                 const updatedNotes = notes.filter(note => note.id !== noteId)
                 console.log(note)
                 setNotes(updatedNotes)
-                showSuccessMsg( note.isArchived? 'Note moved to Archive': 'Removed From Archive')
+                showSuccessMsg(note.isArchived ? 'Note moved to Archive' : 'Removed From Archive')
 
             })
             .catch((err) => {
@@ -89,7 +90,7 @@ export function NoteIndex() {
                 const updatedNotes = notes.filter(note => note.id !== noteId)
                 console.log(note)
                 setNotes(updatedNotes)
-                showSuccessMsg( note.isPinned?'Note Pinned':'Pin removed')
+                showSuccessMsg(note.isPinned ? 'Note Pinned' : 'Pin removed')
             })
         console.log(notes)
     }
@@ -108,7 +109,8 @@ export function NoteIndex() {
         setEditModal(true)
     }
     return <section className="notes-index">
-        <NoteNav />
+        <button className="side-menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}><i className="fa-solid fa-bars"></i></button>
+        <NoteNav className={isMenuOpen ? "open" : ""} />
         <div className="notes-container">
             <NoteFilter />
             <AddNote onCloseEdit={onCloseEdit} />

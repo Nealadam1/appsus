@@ -42,6 +42,11 @@
     border-bottom: 1px solid rgb(119, 119, 119);
 }
 
+.side-menu-toggle {
+    position: fixed;
+    font-size: 1.5rem;
+}
+
 
 @media (min-width:320px) {
 
@@ -58,14 +63,21 @@
     td p {
         font-size: 0.8rem;
     }
+
+    .side-menu-toggle {
+        top: 0;
+    }
 }
 
 @media (min-width:641px) {
 
     /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+
+
     .main-container {
         background-color: orange;
-        grid-template-columns: 30px 1fr 30px;
+        grid-template-columns: 00px 1fr 0px;
+        width: 100vw;
     }
 
     td p {
@@ -79,6 +91,10 @@
     .main-container {
         background-color: greenyellow;
         grid-template-columns: 255px 1fr 40px;
+    }
+
+    .side-menu-toggle {
+        opacity: 0;
     }
 }
 

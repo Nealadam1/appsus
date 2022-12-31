@@ -3,13 +3,13 @@ const { useState, useEffect, Fragment } = React
 import { MailCompose } from "../cmps/mail-compose.jsx"
 
 import ReactLogo from ''
-export function MailFolderList({ displayDeleted, displayStarred, displaySent }) {
+export function MailFolderList({ className, displayDeleted, displayStarred, displaySent }) {
     const [activeDeleted, setActiveDeleted] = useState(null)
     const [activeStar, setActiveStar] = useState(null)
     const [activeSent, setActiveSent] = useState(null)
-
+    console.log(className);
     return <section className="nav-container">
-        <aside>
+        <aside className={className}>
             <div>
                 <MailCompose />
             </div>
