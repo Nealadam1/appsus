@@ -6,10 +6,8 @@ import { } from "appsus/assets/img/icon.png"
 import { } from ""
 export function AppHeader() {
     let { pathname } = useLocation()
-    // console.log(pathname);
 
     return <header className="app-header header">
-        <img className="logo" src="../assets/img/icon.png" alt="img" />
         <Link className="img-container" to="/">
             <img className="logo" src="../assets/img/icon.png" alt="img" />
         </Link>

@@ -85,3 +85,9 @@ tr:hover {
 .mail-header {
     max-width: 70%;
 }
+
+.hidden-container pre {
+    overflow-x: hidden;
+    max-width: 70vw;
+    white-space: break-spaces;
+}
