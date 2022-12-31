@@ -1,7 +1,7 @@
 .main-container {
     /* height: 90vh; */
     display: grid;
-    grid-template-columns: 250px 1fr 80px;
+    grid-template-columns: 245px 1fr 40px;
     grid-template-rows: 55px 1fr;
     /* margin-top: 10px; */
 }
@@ -48,6 +48,15 @@
     /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
     .main-container {
         background-color: red;
+        grid-template-columns: 0px 1fr 0px;
+    }
+
+    .mail-container {
+        margin: 0;
+    }
+
+    td p {
+        font-size: 0.8rem;
     }
 }
 
@@ -56,6 +65,11 @@
     /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
     .main-container {
         background-color: orange;
+        grid-template-columns: 30px 1fr 30px;
+    }
+
+    td p {
+        font-size: 1rem;
     }
 }
 
@@ -64,5 +78,18 @@
     /* big landscape tablets, laptops, and desktops */
     .main-container {
         background-color: greenyellow;
+        grid-template-columns: 255px 1fr 40px;
+    }
+}
+
+@media (min-width:1281px) {
+
+    /* hi-res laptops and desktops */
+    .main-container {
+        grid-template-columns: 265px 1fr 40px;
+    }
+
+    td p {
+        font-size: 1.1rem;
     }
 }

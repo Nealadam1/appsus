@@ -117,7 +117,7 @@ export function MailPreview({ mail, onMailRead, isRenderDeleted, displayStarred,
             </td>
 
             <td>
-                {utilService.displayDate(mail.sentAt)}
+                <p>{utilService.displayDate(mail.sentAt)}</p>
             </td>
         </tr>
         <tr hidden={!isExpanded} className="hidden-data">
