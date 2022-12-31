@@ -1,6 +1,5 @@
 const { Link, NavLink } = ReactRouterDOM
 const { useState } = React
-import testImg from 'cmps\test.png'
 
 export function AppHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
