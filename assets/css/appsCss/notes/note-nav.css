@@ -1,6 +1,6 @@
 aside {
   position: fixed;
-  top: 65px;
+  top: 64px;
   left: 0;
   bottom: 0;
   width: 240px;
@@ -23,4 +23,29 @@ aside a {
 aside a.active {
   color: #1976d2;
   border-left-color: #1976d2;
+}
+
+
+@media (min-width:320px) {
+
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  aside {
+    background-color: red;
+  }
+}
+
+@media (min-width:641px) {
+
+  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+  aside {
+    background-color: orange;
+  }
+}
+
+@media (min-width:1025px) {
+
+  /* big landscape tablets, laptops, and desktops */
+  aside {
+    background-color: greenyellow;
+  }
 }

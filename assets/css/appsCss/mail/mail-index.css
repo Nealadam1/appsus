@@ -41,3 +41,28 @@
     display: block;
     border-bottom: 1px solid rgb(119, 119, 119);
 }
+
+
+@media (min-width:320px) {
+
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    .main-container {
+        background-color: red;
+    }
+}
+
+@media (min-width:641px) {
+
+    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+    .main-container {
+        background-color: orange;
+    }
+}
+
+@media (min-width:1025px) {
+
+    /* big landscape tablets, laptops, and desktops */
+    .main-container {
+        background-color: greenyellow;
+    }
+}
