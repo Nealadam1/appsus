@@ -54,14 +54,13 @@ export function LabelEdit() {
         );
     }
     function onSaveLabels(ev) {
-        if (ev) ev.preventDefault()
-        labelsToEdit.forEach(labelToEdit => {
-            labelToEdit.id = null
-            labelService.save(labelToEdit).then(() =>eventBusService.emit('label-saved'))
-        })
+        ev.preventDefault()
+        console.log(labelsToEdit)
+        labelService.set(labelsToEdit)
+        eventBusService.emit('label-saved')
         console.log('labels saved', labelsToEdit)
         showSuccessMsg('Labels Saved')
-        
+
         navigate('/note')
 
     }
@@ -96,7 +95,7 @@ export function LabelEdit() {
                         onChange={handleChange}
 
                     />
-                    <i className="fa-solid fa-trash"onClick={(ev) => onRemoveLabel(labelToEdit.id, ev)}></i>
+                    <i className="fa-solid fa-trash" onClick={(ev) => onRemoveLabel(labelToEdit.id, ev)}></i>
                 </div>
             })}
 
@@ -108,7 +107,7 @@ export function LabelEdit() {
                 ref={elInputRef}
 
             />
-            <i className="fa-solid fa-plus"onClick={onAddLabel}></i>
+            <i className="fa-solid fa-plus" onClick={onAddLabel}></i>
             <hr />
             <p className="done" onClick={onSaveLabels}>Done</p>
         </form>

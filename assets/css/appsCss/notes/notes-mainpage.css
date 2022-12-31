@@ -16,9 +16,16 @@
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
-    max-width: 1200px;
-   
+    max-width: 80vw;
     padding: 20px;
+    max-height: 90vh;
+    overflow-y: scroll;
+
+  }
+
+  img{
+    margin-bottom: 10px;
+    border-radius: 10px;
   }
   
 
@@ -80,4 +87,9 @@
     background-color: #999;
   }
 
-  
+  .note-preview a{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+  }

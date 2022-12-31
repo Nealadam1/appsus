@@ -45,7 +45,7 @@ export function NoteTxtEdit({ isVisible, noteId }) {
         return innerWidth
     }
 
-    return <div className="edit-note-container">
+    return <div >
         <div >
             <input type="text"
                 name="title"

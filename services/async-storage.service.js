@@ -4,6 +4,7 @@ export const storageServiceAsync = {
     post,
     put,
     remove,
+    set,
 }
 
 function query(entityType, delay = 100) {
@@ -27,6 +28,10 @@ function post(entityType, newEntity) {
         _save(entityType, entities)
         return newEntity
     })
+}
+
+function set(entityType, entities) {
+    localStorage.setItem(entityType, JSON.stringify(entities))
 }
 
 

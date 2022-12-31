@@ -41,7 +41,7 @@ export function NoteVideoEdit({isVisible}) {
   }
 
 
-  return <div className="edit-note-container">
+  return <div >
     <div >
       <input type="text"
         name="title"
@@ -55,7 +55,7 @@ export function NoteVideoEdit({isVisible}) {
         value={noteToEdit.info.url}
         onChange={handleChange} />
       <div>
-        <button onSubmit={onSaveNote}>{noteToEdit.id ? 'Save' : 'Create'}</button>
+        <p onClick={onSaveNote}>{noteToEdit.id ? 'Save' : 'Create'}</p>
         <p onClick={() => isVisible()} >Close</p>
       </div>
     </div>

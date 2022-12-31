@@ -1,9 +1,9 @@
 :root {
-    --main-bg-color: lightblue;
+    --main-bg-color: rgb(227, 122, 2);
 
     /* loading spinner colors */
-    --border-clr: rgb(183, 217, 255);
-    --spinning-bar: rgb(42, 106, 179);
+    --border-clr: rgb(225, 216, 209);
+    --spinning-bar: rgb(255, 158, 12);
 
     /* mail colors */
     --mail-bg: rgb(201, 201, 201);

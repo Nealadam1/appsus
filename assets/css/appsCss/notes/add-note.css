@@ -1,71 +1,72 @@
 .add-note-container {
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    background-color: #ffffff;
-    border: 1px solid #ebebeb;
-    border-radius: 20px;
-    box-sizing: border-box;
-    height: 50px;
-    padding: 0 16px;
-    width: 60vw;
-    box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
-  }
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ebebeb;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 50px;
+  padding: 0 16px;
+  width: 60%;
+  box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
+}
 
-  .add-note-container .add-note{
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-between;
-    
-    
-  }
-  
-  .add-note-container input {
-    background-color: transparent;
-    border: none;
-    color: #212121;
-    font-size: 14px;
-    outline: none;
-    width: 100%;
-  }
-  
-  .add-note-container i {
-    color: #616161;
-    font-size: 25px;
-    margin-right: 8px;
-  }
-  .edit-note-container {
-    position: absolute;
-    top: 2vh;
-    left: 13vw;
-    width: inherit;
-    background-color: #ffffff;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
-    border-radius: 30px;
-    padding: 20px;
-    z-index: 3;
-    
+.add-note-container .add-note {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+
+
+}
+
+.add-note-container input {
+  background-color: transparent;
+  border: none;
+  color: #212121;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+}
+
+.add-note-container i {
+  color: #616161;
+  font-size: 25px;
+  margin-right: 8px;
+}
+
+.edit-note-container {
+  position: absolute;
+  top: 2vh;
+  left: 13vw;
+  width: inherit;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  border-radius: 30px;
+  padding: 20px;
+  z-index: 3;
+
 }
 
 .edit-note-container .todo-input {
-    position: relative;
+  position: relative;
 }
 
 .edit-note-container input {
-    background-color: transparent;
-    margin-bottom: 10px;
-    height: 20px;
-    padding-left: 10px;
-    border: solid 0.3px lightgray;
-    border-radius: 8px;
-    color: #212121;
-    font-size: 1rem;
-    outline: none;
-    width: 80%;
+  background-color: transparent;
+  margin-bottom: 10px;
+  height: 20px;
+  padding-left: 10px;
+  border: solid 0.3px lightgray;
+  border-radius: 8px;
+  color: #212121;
+  font-size: 1rem;
+  outline: none;
+  width: 80%;
 
 }
 
-.edit-note-container .todo-input i {
+/* .edit-note-container .todo-input i {
     position: absolute;
     top: 4px;
     right: 5px;
@@ -86,23 +87,35 @@
     background-color: beige;
     margin:5px
 
-}
-.edit-note-container .save-btns .save {
+} */
+/* .edit-note-container .save-btns .save {
    background-color: rgb(36, 106, 236);
 
-}
-.edit-note-container textarea{
-    resize: none;
-    font-family: roboto;
-    border-radius: 8px;
-    border: solid 0.3px lightgray
-}
-
-.edit-note-container .list-todo:hover{
-    color: lightblue;
-    cursor: pointer;
-   
+} */
+.edit-note-container textarea {
+  resize: none;
+  font-family: roboto;
+  font-size: 1rem;
+  margin: 0;
+  border-radius: 8px;
+  border: none
 }
 
+.edit-note-container .list-todo:hover {
+  color: lightblue;
+  cursor: pointer;
 
-  
+}
+
+.add-note-container .dark-background {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #212121;
+  z-index: 2;
+  opacity: 0.5;
+  cursor: pointer;
+
+}

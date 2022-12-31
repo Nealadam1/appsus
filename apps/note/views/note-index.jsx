@@ -18,10 +18,12 @@ export function NoteIndex() {
     const [isLoading, setIsLoading] = useState(false)
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     const [notes, setNotes] = useState([])
+    const [isSaveModal, setSaveModal] = useState(false)
+
 
     useEffect(() => {
         loadNotes()
-    }, [isEditModal])
+    }, [isEditModal, isSaveModal])
 
     function loadNotes() {
         setIsLoading(true)
@@ -37,13 +39,16 @@ export function NoteIndex() {
         console.log(noteId)
         noteService.get(noteId)
             .then((note) => {
-                if (note.isArchived) note.isArchived=false
-                note.isTrash = true
+                if (note.isTrash) {
+                    note.isTrash = false
+                } else {
+                    note.isTrash = true
+                }
                 noteService.save(note)
                 const updatedNotes = notes.filter(note => note.id !== noteId)
                 console.log(note)
                 setNotes(updatedNotes)
-                showSuccessMsg('Note moved to Trash')
+                showSuccessMsg( note.isTrash? 'Note moved to Trash': 'Removed from Trash')
 
             })
             .catch((err) => {
@@ -55,13 +60,16 @@ export function NoteIndex() {
         console.log(noteId)
         noteService.get(noteId)
             .then((note) => {
-                if(note.isTrash) note.isTrash=false
-                note.isArchived = true
+                if (note.isArchived) {
+                    note.isArchived = false
+                } else {
+                    note.isArchived = true
+                }
                 noteService.save(note)
                 const updatedNotes = notes.filter(note => note.id !== noteId)
                 console.log(note)
                 setNotes(updatedNotes)
-                showSuccessMsg('Note moved to Archive')
+                showSuccessMsg( note.isArchived? 'Note moved to Archive': 'Removed From Archive')
 
             })
             .catch((err) => {
@@ -69,10 +77,32 @@ export function NoteIndex() {
             })
     }
 
+    function onPinNote(noteId) {
+        noteService.get(noteId)
+            .then(note => {
+                if (note.isPinned) {
+                    note.isPinned = false
+                } else {
+                    note.isPinned = true
+                }
+                noteService.save(note)
+                const updatedNotes = notes.filter(note => note.id !== noteId)
+                console.log(note)
+                setNotes(updatedNotes)
+                showSuccessMsg( note.isPinned?'Note Pinned':'Pin removed')
+            })
+        console.log(notes)
+    }
+
     function onCloseEdit() {
         navigate('/note')
         setEditModal(false)
+        setSaveModal(!isSaveModal)
+        console.log(isSaveModal)
+
+
     }
+
     function onOpenEdit() {
         console.log('yey')
         setEditModal(true)
@@ -81,9 +111,9 @@ export function NoteIndex() {
         <NoteNav />
         <div className="notes-container">
             <NoteFilter />
-            <AddNote />
+            <AddNote onCloseEdit={onCloseEdit} />
             {isLoading && <LoadingSpinner />}
-            {!isLoading && <NoteList onOpenEdit={onOpenEdit} notes={notes} onRemoveNote={onRemoveNote} onArchiveNote={onArchiveNote} />}
+            {!isLoading && <NoteList onOpenEdit={onOpenEdit} notes={notes} onRemoveNote={onRemoveNote} onArchiveNote={onArchiveNote} onPinNote={onPinNote} />}
             {(isEditModal) && <NoteEdit onCloseEdit={onCloseEdit} />}
 
 
