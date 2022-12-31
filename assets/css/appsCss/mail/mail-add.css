@@ -43,9 +43,6 @@
     font-size: 1rem;
 }
 
-input[type=text] {
-    padding-left: 10px;
-}
 
 textarea {
     min-height: 30vh;
@@ -60,6 +57,7 @@ textarea {
 }
 
 .text-area div:last-child button {
+    position: absolute;
     width: 30%;
     border: none;
     background-color: #2085eb;
@@ -67,4 +65,35 @@ textarea {
     font-size: 1rem;
     font-weight: bold;
     border-radius: 8px;
+    height: 60px;
+    bottom: 6%;
+}
+
+@media (max-width:768px) {
+
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    .compose-container {
+        bottom: 0;
+        right: 0;
+
+        min-width: 20vw;
+    }
+
+    .text-area {
+        display: block;
+        width: 100vw;
+        margin: 0;
+    }
+
+    .compose-container textarea {
+        width: 100vw;
+    }
+
+    textarea {
+        font-size: 1.05rem;
+    }
+
+    .compose-container input {
+        width: 100vw;
+    }
 }
