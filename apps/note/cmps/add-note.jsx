@@ -31,7 +31,7 @@ export function AddNote({ onCloseEdit }) {
 
     return <div className="add-note-container">
         <div className="add-note">
-            <div onClick={(ev) => setNoteType('note-txt', ev)}>
+            <div className="add-note-entertxt" onClick={(ev) => setNoteType('note-txt', ev)}>
                 Enter Text...
 
             </div>
