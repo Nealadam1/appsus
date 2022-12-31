@@ -9,7 +9,7 @@ const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRo
 export function NoteNav({ className, onSetFilter }) {
     return <section className="nav-container">
         <aside className={className}>
-            <div onClick={()=>{
+            <div className="nav-note" onClick={()=>{
                 const filter=noteService.getDefaultFilter()
                 onSetFilter(filter)}}>
                 <i className="fa-solid fa-note-sticky"></i><span>Notes</span>

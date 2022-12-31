@@ -6,9 +6,37 @@ aside {
   width: 240px;
   background-color: #ffffff;
   box-shadow: 4px 0px 3px 0px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  
+}
+aside div{
+  cursor: pointer;
 }
 
-aside a {
+aside i {
+  display: block;
+  height: 48px;
+  line-height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #5f6368;
+  text-decoration: none;
+  padding: 0 16px;
+  border-left: 4px solid transparent;
+  
+}
+
+aside i.active {
+  color: #1976d2;
+  border-left-color: #1976d2;
+}
+.label-list i{
+  border-radius: 3px;
+  display: flex;
+  border-bottom: 1px solid grey;
+  align-items: center;
+}
+.label-container a{
+
   display: block;
   height: 48px;
   line-height: 48px;
@@ -20,10 +48,12 @@ aside a {
   border-left: 4px solid transparent;
 }
 
-aside a.active {
-  color: #1976d2;
-  border-left-color: #1976d2;
+.nav-note{
+  margin-top: 30px;
+  display: flex;
+  
 }
+
 
 
 @media (min-width:320px) {

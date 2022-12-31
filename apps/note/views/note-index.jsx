@@ -20,6 +20,7 @@ export function NoteIndex() {
     const [notes, setNotes] = useState([])
     const [isSaveModal, setSaveModal] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const filter=noteService.getDefaultFilter()
 
 
     useEffect(() => {
@@ -54,12 +55,15 @@ export function NoteIndex() {
                 // console.log(note)
                 setNotes(updatedNotes)
                 showSuccessMsg(note.isTrash ? 'Note moved to Trash' : 'Removed from Trash')
-                
+                setTimeout(() => {
+                    onCloseEdit()
+                }, 100);
 
             })
             .catch((err) => {
                 showErrorMsg('Delete note failed')
             })
+            
     }
 
     function onArchiveNote(noteId) {
@@ -76,6 +80,9 @@ export function NoteIndex() {
                 // console.log(note)
                 setNotes(updatedNotes)
                 showSuccessMsg(note.isArchived ? 'Note moved to Archive' : 'Removed From Archive')
+                setTimeout(() => {
+                    onCloseEdit()
+                }, 100);
 
             })
             .catch((err) => {
