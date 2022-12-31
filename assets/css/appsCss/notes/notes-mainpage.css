@@ -163,3 +163,12 @@
     opacity: 0;
   }
 }
+
+.todo-preview-text{
+  display: flex;
+  justify-content: space-between;
+}
+.last-edit{
+  font-size: 0.7rem;
+  justify-self: flex-end;
+}

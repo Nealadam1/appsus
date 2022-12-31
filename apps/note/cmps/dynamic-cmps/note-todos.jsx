@@ -10,7 +10,7 @@ export function NoteTodos(note) {
     const [todosDoneAt, setTodosDoneAt] = useState(todos)
 
 
-    // console.log(note)
+    console.log(note)
 
     function handleChange({ target }) {
         console.log(target)
@@ -26,6 +26,7 @@ export function NoteTodos(note) {
             })
             setTodosDoneAt(newTodosDoneAt)
             note.info.todos = newTodosDoneAt
+            console.log(note)
             noteService.save(note)
 
         } else {
@@ -48,8 +49,15 @@ export function NoteTodos(note) {
         <h3>{label}</h3>
         <ul>
             {todos.map((todo, idx) => <li key={todo.id}>
-                <input type="checkbox"
-                    name="doneAt" checked={todo.doneAt} id={idx} value={todo.id} onChange={handleChange} /><label htmlFor="todo">{todo.txt}</label><span className="last-edit"> Edited at:{todo.doneAt}</span>
+
+                <div className="todo-preview-text">
+                    <div>
+                        <input type="checkbox"
+                            name="doneAt" defaultChecked={todo.doneAt} id={idx} value={todo.id} onChange={handleChange} />
+                        <label htmlFor="todo">{todo.txt}</label>
+                    </div>
+                    <span className="last-edit">{(todo.doneAt) ? `Done at:${todo.doneAt}` : ''}</span>
+                </div>
 
             </li>
             )}

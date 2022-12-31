@@ -37,6 +37,7 @@ export function NoteVideoEdit({ isVisible }) {
       console.log('note saved', note);
       showSuccessMsg('Note saved!')
       navigate('/note')
+      isVisible()
     })
   }
 
@@ -55,8 +56,10 @@ export function NoteVideoEdit({ isVisible }) {
         value={noteToEdit.info.url}
         onChange={handleChange} />
       <div>
+        
         <p onClick={onSaveNote}>{noteToEdit.id ? 'Save' : 'Create'}</p>
         <p onClick={() => isVisible()} >Close</p>
+
       </div>
     </div>
 

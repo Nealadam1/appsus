@@ -87,8 +87,8 @@ function _createNotes() {
             isTrash: false,
             labels: [],
             info: {
-                txt: "Fullstack Me Baby!",
-                title: "someTitle"
+                txt: "Shows to watch later",
+                title: "Bojack horseman"
             }
         },
         {
@@ -102,12 +102,24 @@ function _createNotes() {
                 url: "http://www.radicalart.info/something/On_Kawara-63-Something-NSE-s.jpg",
                 title: "Bobi and Me"
             },
-            style: {
-                backgroundColor: "#00d"
-            }
+            style:"#ffe666"
+            
         },
         {
             id: "n103",
+            type: "note-video",
+            isArchived: false,
+            isPinned: false,
+            isTrash: false,
+            labels: [],
+            info: {
+                url: "https://www.youtube.com/watch?v=t9Pbd89lOZs",
+                title: "Recipe for later"
+            },
+            style:"#e3b7d2"
+        },
+        {
+            id: "n104",
             type: "note-todos",
             isArchived: false,
             isPinned: false,
@@ -117,12 +129,12 @@ function _createNotes() {
                 label: "Get my stuff together",
                 todos: [
                     { id: "dsadsa", txt: "Driving liscence", doneAt: null },
-                    { id: "ddjhg", txt: "Coding power", doneAt: 187111111 }
+                    { id: "ddjhg", txt: "Coding power", doneAt:null }
                 ]
             }
         },
         {
-            id: "n104",
+            id: "n105",
             type: "note-video",
             isArchived: false,
             isPinned: false,
@@ -130,11 +142,22 @@ function _createNotes() {
             labels: [],
             info: {
                 url: "https://www.youtube.com/watch?v=NBMqqaClEQ8",
-                title: "test vid"
+                title: "Awsome Graffiti"
             },
-            style: {
-                backgroundColor: "#00d"
-            }
+            style:"#e3b7d2"
+        },
+        {
+            id: "n1063",
+            type: "note-video",
+            isArchived: true,
+            isPinned: false,
+            isTrash: false,
+            labels: [],
+            info: {
+                url: "https://www.youtube.com/watch?v=VvU27gvAK40",
+                title: "Should i sign up?"
+            },
+            style:"#e3b7d2"
         },]
     }
     storageService.saveToStorage(NOTES_KEY, notes)

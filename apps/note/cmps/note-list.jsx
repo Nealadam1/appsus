@@ -56,7 +56,7 @@ export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote, onPin
             <i className="fa-solid fa-palette" onClick={() => onSetBackgroundColor(note.id)}>
               <BtnSetColor onSetBackgroundColor={onSetBackgroundColor} note={note} />
             </i>
-            <i className="fa-solid fa-thumbtack" onClick={() => onPinNote(note.id)}></i>
+            {/* <i className="fa-solid fa-thumbtack" onClick={() => onPinNote(note.id)}></i> */}
           </div>
           <div ref={elLabelSelectRef} className="note-label-select">
             <BtnLabels note={note} />

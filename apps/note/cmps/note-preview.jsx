@@ -19,8 +19,8 @@ export function NotePreview({ note, onOpenEdit }) {
     // to={'/mail/compose'}
     return <article className="note-preview">
         <Link className="fa-solid fa-pen-to-square" onClick={() => onOpenEdit()} to={`/note/edit/${note.id}`}></Link>
-        <Link className="mail-btn fa-solid fa-envelope" to={''} onClick={getNoteData}></Link>
-        <DynamicCmp id={note.id} type={note.type} info={note.info} style={note.style} />
+        {/* <Link className="mail-btn fa-solid fa-envelope" to={''} onClick={getNoteData}></Link> */}
+        <DynamicCmp id={note.id} labels={note.labels} type={note.type} info={note.info} style={note.style} />
     </article>
 
 
