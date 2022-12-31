@@ -1,8 +1,8 @@
-const { useParams, useNavigate, Link, NavLink, useLocation } = ReactRouterDOM
+const { Link, NavLink } = ReactRouterDOM
+const { useState } = React
 
-import { MailFilter } from "../apps/mail/cmps/mail-filter.jsx";
 export function AppHeader() {
-    let { pathname } = useLocation()
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return <header className="app-header header">
 
@@ -10,10 +10,14 @@ export function AppHeader() {
             <img className="logo" src="../assets/img/icon.png" alt="img" />
         </Link>
         <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/mail">Mail</NavLink>
-            <NavLink to="/note">Note</NavLink>
+            <button className="app-menu">Menu</button>
+
+            <div className="link-container">
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/about">About</NavLink>
+                <NavLink to="/mail">Mail</NavLink>
+                <NavLink to="/note">Note</NavLink>
+            </div>
         </nav>
     </header>
 }

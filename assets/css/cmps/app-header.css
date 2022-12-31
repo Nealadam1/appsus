@@ -17,6 +17,7 @@
 nav {
     display: flex;
     justify-content: end;
+    height: 100%;
 }
 
 nav a {
@@ -39,6 +40,10 @@ nav a.active {
     grid-column-start: 2;
 }
 
+.app-header {
+    padding-left: 70px;
+    justify-content: space-between;
+}
 
 .side-menu-toggle {
     position: fixed;
@@ -62,6 +67,19 @@ nav a.active {
     /* top: 10px; */
     background-color: gray;
     border: none;
+}
+
+.app-menu {
+    background-color: teal;
+}
+
+.link-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 @media (max-width:1025px) {
