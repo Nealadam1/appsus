@@ -91,11 +91,13 @@
   .note-list {
     justify-content: center;
     overflow-y: scroll;
-    max-height: 100vh;
+    max-height: 85vh;
+    margin-bottom: 90px;
   }
 
   .notes-container {
     max-width: 90vw;
+    margin-bottom: 90px;
   }
 }
 
