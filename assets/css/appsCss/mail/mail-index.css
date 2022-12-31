@@ -42,10 +42,6 @@
     border-bottom: 1px solid rgb(119, 119, 119);
 }
 
-.side-menu-toggle {
-    position: fixed;
-    font-size: 1.5rem;
-}
 
 
 @media (min-width:320px) {
@@ -64,9 +60,7 @@
         font-size: 0.8rem;
     }
 
-    .side-menu-toggle {
-        top: 0;
-    }
+
 }
 
 @media (min-width:641px) {
@@ -83,6 +77,12 @@
     td p {
         font-size: 1rem;
     }
+
+    .side-menu-toggle {
+        top: 15px;
+        left: 15px;
+        opacity: 1;
+    }
 }
 
 @media (min-width:1025px) {
@@ -94,6 +94,8 @@
     }
 
     .side-menu-toggle {
+        top: 15px;
+        left: 15px;
         opacity: 0;
     }
 }
@@ -107,5 +109,9 @@
 
     td p {
         font-size: 1.1rem;
+    }
+
+    .side-menu-toggle {
+        opacity: 0;
     }
 }

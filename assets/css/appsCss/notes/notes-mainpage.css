@@ -79,6 +79,11 @@
   background-color: #999;
 }
 
+.side-menu-toggle {
+  position: fixed;
+  font-size: 1.5rem;
+  left: 0;
+}
 
 @media (min-width:320px) {
 
@@ -86,6 +91,7 @@
   .notes-index {
     margin-left: 0;
     height: 100%;
+    justify-content: center;
   }
 
   .note-list {
@@ -99,6 +105,7 @@
     max-width: 90vw;
     margin-bottom: 90px;
   }
+
 }
 
 @media (min-width:641px) {
@@ -117,5 +124,9 @@
     margin-left: 240px;
     max-width: 85vw;
 
+  }
+
+  .side-menu-toggle {
+    opacity: 0;
   }
 }

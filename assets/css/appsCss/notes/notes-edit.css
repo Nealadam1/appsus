@@ -9,22 +9,23 @@
     border-radius: 30px;
     padding: 20px;
     z-index: 3;
-    
+
 }
 
 .note-edit-container .todo-input {
     position: relative;
+    height: 60px;
 }
 
 .note-edit-container input {
     background-color: transparent;
     margin-bottom: 10px;
-    height: 20px;
+    height: 40px;
     padding-left: 10px;
     border: solid 0.3px lightgray;
     border-radius: 8px;
     color: #212121;
-    font-size: 1rem;
+    font-size: 1.05rem;
     outline: none;
     width: 80%;
 
@@ -32,15 +33,18 @@
 
 .note-edit-container .todo-input i {
     position: absolute;
-    top: 4px;
+    top: 10px;
     right: 5px;
+    font-size: 1.5rem;
     cursor: pointer;
 }
-.save-btns{
+
+.save-btns {
     display: flex;
     justify-content: space-between;
-    
+
 }
+
 .note-edit-container .save-btns p {
     font-size: 1rem;
     padding: 20px;
@@ -49,14 +53,15 @@
     cursor: pointer;
     border-radius: 10px;
     background-color: beige;
-    margin:5px
-
+    margin: 5px
 }
+
 .note-edit-container .save-btns .save {
-   background-color: rgb(36, 106, 236);
+    background-color: rgb(36, 106, 236);
 
 }
-.note-edit-container textarea{
+
+.note-edit-container textarea {
     resize: none;
     font-family: roboto;
     margin: 0;
@@ -64,22 +69,78 @@
     border: none
 }
 
-.note-edit-container .list-todo:hover{
+.note-edit-container .list-todo:hover {
     color: lightblue;
     cursor: pointer;
-   
+
 }
 
-.dark-background{
+.dark-background {
     position: fixed;
     right: 0;
-    top:0;
+    top: 0;
     height: 100%;
     width: 100%;
     background-color: #212121;
     z-index: 2;
     opacity: 0.5;
     cursor: pointer;
-  
-  }
-  
+
+}
+
+
+@media (max-width:1000px) {
+
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    .note-edit-container {
+        top: 20vh;
+        left: 25vw;
+        width: 50%;
+        height: 60%;
+    }
+
+    .note-edit-container .todo-input {
+        height: 70px;
+    }
+
+    .todo-input input {
+        height: 60px;
+        font-size: 1rem;
+    }
+
+    .note-edit-container .todo-input i {
+        top: 18px;
+        right: 5px;
+        font-size: 1.8rem;
+    }
+
+}
+
+
+
+@media (max-width:425px) {
+
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    .note-edit-container {
+        top: 20vh;
+        left: 25vw;
+        width: 50%;
+        height: 60%;
+    }
+
+    .note-edit-container .todo-input {
+        height: 70px;
+    }
+
+    .todo-input input {
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    .note-edit-container .todo-input i {
+        top: 15px;
+        right: 5px;
+        font-size: 1.4rem;
+    }
+
+}

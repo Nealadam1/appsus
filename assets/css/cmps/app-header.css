@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     background-color: #ffffff;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
     height: 64px;
     padding: 0 16px;
 }
@@ -40,26 +40,54 @@ nav a.active {
 }
 
 
-@media (min-width:320px) {
+.side-menu-toggle {
+    position: fixed;
+    font-size: 1.5rem;
+    /* top: 10px; */
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    height: 35px;
+    width: 35px;
+}
+
+.side-menu-toggle:hover {
+    background-color: rgb(255, 255, 255);
+    transition: background-color .3s;
+}
+
+.side-menu-toggle:active {
+    position: fixed;
+    font-size: 1.5rem;
+    /* top: 10px; */
+    background-color: gray;
+    border: none;
+}
+
+@media (max-width:1025px) {
 
     /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-    .header {
-        background-color: red;
+    .app-header {
+        padding-left: 70px;
+        /* position: relative; */
+        /* width: 200px; */
+        /* margin-right: 500px; */
+        /* grid-column-start: 2; */
     }
+
+
+
 }
 
-@media (min-width:641px) {
-
-    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
-    .header {
-        background-color: orange;
-    }
-}
 
 @media (min-width:1025px) {
 
     /* big landscape tablets, laptops, and desktops */
     .header {
         background-color: greenyellow;
+    }
+
+    .side-menu-toggle {
+        opacity: 0;
     }
 }
