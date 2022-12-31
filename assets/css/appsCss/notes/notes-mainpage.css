@@ -75,9 +75,9 @@
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
-.note-preview a{
+.note-preview a {
   position: absolute;
-  right:8px;
+  right: 8px;
   top: 8px;
   font-size: 23px;
 }
@@ -89,7 +89,8 @@
 .side-menu-toggle {
   position: fixed;
   font-size: 1.5rem;
-  left: 0;
+  left: 20px;
+  top: 15px;
 }
 
 @media (min-width:320px) {
