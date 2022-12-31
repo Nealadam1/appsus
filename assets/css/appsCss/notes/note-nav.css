@@ -29,11 +29,18 @@ aside i.active {
   color: #1976d2;
   border-left-color: #1976d2;
 }
-.label-list i{
-  border-radius: 3px;
+.label-list{
+  border-radius: 0px;
   display: flex;
-  border-bottom: 1px solid grey;
+  border-bottom: 2px solid rgb(0, 0, 0);
   align-items: center;
+  
+}
+.label-list i{
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .label-container a{
 
