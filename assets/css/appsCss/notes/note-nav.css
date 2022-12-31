@@ -30,7 +30,6 @@ aside a.active {
 
   /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
   aside {
-    background-color: red;
     transform: translateX(-100%);
   }
 
@@ -44,16 +43,13 @@ aside a.active {
 @media (min-width:641px) {
 
   /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
-  aside {
-    background-color: orange;
-  }
+  aside {}
 }
 
 @media (min-width:1025px) {
 
   /* big landscape tablets, laptops, and desktops */
   aside {
-    background-color: greenyellow;
     transform: translateX(0);
   }
 }

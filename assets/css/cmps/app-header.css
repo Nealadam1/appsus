@@ -69,10 +69,6 @@ nav a.active {
     /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
     .app-header {
         padding-left: 70px;
-        /* position: relative; */
-        /* width: 200px; */
-        /* margin-right: 500px; */
-        /* grid-column-start: 2; */
     }
 
 
@@ -83,9 +79,6 @@ nav a.active {
 @media (min-width:1025px) {
 
     /* big landscape tablets, laptops, and desktops */
-    .header {
-        background-color: greenyellow;
-    }
 
     .side-menu-toggle {
         opacity: 0;

@@ -48,7 +48,6 @@
 
     /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
     .main-container {
-        background-color: red;
         grid-template-columns: 0px 1fr 0px;
     }
 
@@ -69,7 +68,6 @@
 
 
     .main-container {
-        background-color: orange;
         grid-template-columns: 00px 1fr 0px;
         width: 100vw;
     }
@@ -89,7 +87,6 @@
 
     /* big landscape tablets, laptops, and desktops */
     .main-container {
-        background-color: greenyellow;
         grid-template-columns: 255px 1fr 40px;
     }
 
