@@ -28,7 +28,7 @@ export function NoteTxtEdit({ isVisible, noteId }) {
         let { value, type, name: field } = target
         value = type === 'number' ? +value : value
         setNoteToEdit((prevnote) => ({ ...prevnote, "info": { ...prevnote.info, [field]: value } }))
-        console.log(noteToEdit)
+        // console.log(noteToEdit)
     }
 
     function onSaveNote(ev) {

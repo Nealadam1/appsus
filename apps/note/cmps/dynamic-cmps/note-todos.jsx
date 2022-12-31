@@ -8,40 +8,40 @@ const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRo
 export function NoteTodos(note) {
     const { label, todos } = note.info
     const [todosDoneAt, setTodosDoneAt] = useState(todos)
-    
-    
-    console.log(note)
+
+
+    // console.log(note)
 
     function handleChange({ target }) {
         console.log(target)
-        
+
         const { value, checked } = target
-        if(checked){
-            const newTodosDoneAt=todosDoneAt.map(todo=> {
-                if(todo.id===value){
-                    return {...todo, doneAt: utilService.displayDate(new Date().getTime())}
+        if (checked) {
+            const newTodosDoneAt = todosDoneAt.map(todo => {
+                if (todo.id === value) {
+                    return { ...todo, doneAt: utilService.displayDate(new Date().getTime()) }
                 } else {
                     return todo
                 }
             })
             setTodosDoneAt(newTodosDoneAt)
-            note.info.todos=newTodosDoneAt
+            note.info.todos = newTodosDoneAt
             noteService.save(note)
-            
+
         } else {
-           const newTodosDoneAt=todos.map(todo=>{
-            if(todo.id===value){
-                return{...todo, doneAt: ""}
-            } else {return todo}
-           })
-           setTodosDoneAt(newTodosDoneAt)
-           note.info.todos=newTodosDoneAt
+            const newTodosDoneAt = todos.map(todo => {
+                if (todo.id === value) {
+                    return { ...todo, doneAt: "" }
+                } else { return todo }
+            })
+            setTodosDoneAt(newTodosDoneAt)
+            note.info.todos = newTodosDoneAt
             noteService.save(note)
-           
+
         }
         console.log(todosDoneAt)
-        console.log(note)
-        
+        // console.log(note)
+
     }
 
     return <div className="todo-preview">

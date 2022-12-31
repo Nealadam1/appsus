@@ -7,7 +7,7 @@ const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
-export function AddNote({onCloseEdit}) {
+export function AddNote({ onCloseEdit }) {
     const [note, setNote] = useState({})
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export function AddNote({onCloseEdit}) {
     function setNoteType(noteType, ev) {
         ev.stopPropagation()
         setNote((prevnote) => ({ ...prevnote, type: noteType }))
-        console.log(note)
+        // console.log(note)
     }
 
     function isVisible() {

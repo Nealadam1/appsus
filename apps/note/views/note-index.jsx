@@ -24,24 +24,24 @@ export function NoteIndex() {
 
     useEffect(() => {
         loadNotes()
-    }, [isEditModal, isSaveModal,filterBy])
+    }, [isEditModal, isSaveModal, filterBy])
 
     function loadNotes() {
         setIsLoading(true)
         noteService.query(filterBy)
             .then((notes) => {
-                console.log(notes)
+                // console.log(notes)
                 setNotes(notes)
                 setIsLoading(false)
             })
     }
 
-    function onSetFilter(filterBy){
+    function onSetFilter(filterBy) {
         setFilterBy(filterBy)
     }
 
     function onRemoveNote(noteId) {
-        console.log(noteId)
+        // console.log(noteId)
         noteService.get(noteId)
             .then((note) => {
                 if (note.isTrash) {
@@ -51,7 +51,7 @@ export function NoteIndex() {
                 }
                 noteService.save(note)
                 const updatedNotes = notes.filter(note => note.id !== noteId)
-                console.log(note)
+                // console.log(note)
                 setNotes(updatedNotes)
                 showSuccessMsg(note.isTrash ? 'Note moved to Trash' : 'Removed from Trash')
                 
@@ -63,7 +63,7 @@ export function NoteIndex() {
     }
 
     function onArchiveNote(noteId) {
-        console.log(noteId)
+        // console.log(noteId)
         noteService.get(noteId)
             .then((note) => {
                 if (note.isArchived) {
@@ -73,7 +73,7 @@ export function NoteIndex() {
                 }
                 noteService.save(note)
                 const updatedNotes = notes.filter(note => note.id !== noteId)
-                console.log(note)
+                // console.log(note)
                 setNotes(updatedNotes)
                 showSuccessMsg(note.isArchived ? 'Note moved to Archive' : 'Removed From Archive')
 
@@ -93,11 +93,11 @@ export function NoteIndex() {
                 }
                 noteService.save(note)
                 const updatedNotes = notes.filter(note => note.id !== noteId)
-                console.log(note)
+                // console.log(note)
                 setNotes(updatedNotes)
                 showSuccessMsg(note.isPinned ? 'Note Pinned' : 'Pin removed')
             })
-        console.log(notes)
+        // console.log(notes)
     }
 
     function onCloseEdit() {

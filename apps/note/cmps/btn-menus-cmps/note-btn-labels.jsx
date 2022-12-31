@@ -42,7 +42,7 @@ export function BtnLabels({ note, onToggleLabels }) {
 
     }
 
-  
+
 
     return <div>
         <form>
