@@ -1,14 +1,14 @@
 const { useParams, useNavigate, Link, NavLink, useLocation } = ReactRouterDOM
 
 import { MailFilter } from "../apps/mail/cmps/mail-filter.jsx";
-
+import { } from "./assets/img/icon.png"
 export function AppHeader() {
     let { pathname } = useLocation()
     // console.log(pathname);
 
     return <header className="app-header header">
         <Link className="img-container" to="/">
-            <img className="logo" src="./.././assets/img/icon.png" alt="" />
+            <img className="logo" src="./assets/img/icon.png" alt="" />
         </Link>
         <nav>
             <NavLink to="/">Home</NavLink>
