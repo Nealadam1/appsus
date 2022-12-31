@@ -42,7 +42,7 @@ export function BtnLabels({ note, onToggleLabels }) {
 
     }
 
-    console.log(labels)
+    console.log(note)
 
 
 
@@ -51,7 +51,7 @@ export function BtnLabels({ note, onToggleLabels }) {
             {labels.map((label) => (
                 <div className="label" key={label.id}>
                     <input
-                        checked={note.labels.find(labelitem => labelitem === label.labelName)}
+                        defaultChecked={note.labels.find(labelitem => labelitem === label.labelName)}
                         id={label.id}
                         type="checkbox"
                         value={label.labelName}

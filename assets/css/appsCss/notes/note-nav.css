@@ -32,14 +32,17 @@ aside i.active {
 .label-list{
   border-radius: 0px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  
+  gap: 10px;
+  padding: 10px;
 }
 .label-list i{
-  border-radius: 20px;
+  border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1rem;
 }
 .label-container a{
 
@@ -52,6 +55,7 @@ aside i.active {
   text-decoration: none;
   padding: 0 16px;
   border-left: 4px solid transparent;
+  margin-bottom: 10px;
 }
 
 .nav-note{

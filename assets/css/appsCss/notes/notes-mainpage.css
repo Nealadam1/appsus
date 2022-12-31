@@ -109,7 +109,7 @@
   }
 
   .note-list {
-    justify-content: flex-start;
+    justify-content: center;
     overflow-y: scroll;
     max-height: 85vh;
     margin-bottom: 90px;
@@ -140,7 +140,12 @@
 
   /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
   .notes-container {
+    flex-direction: column;
     max-width: 90vw;
+  }
+
+  .note-list{
+    justify-content: flex-start;
   }
 
 }
