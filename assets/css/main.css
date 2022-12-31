@@ -34,6 +34,7 @@
 @import './appsCss/notes/note-nav.css';
 @import './appsCss/notes/add-note.css';
 @import './appsCss/notes/note-btn-todo.css';
+@import './appsCss/notes/note-btn-label.css';
 
 /* mail css */
 @import './appsCss/mail/mail-index.css';

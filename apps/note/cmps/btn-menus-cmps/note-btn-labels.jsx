@@ -5,8 +5,9 @@ const Router = ReactRouterDOM.HashRouter;
 const { useState, useEffect, useRef } = React;
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM;
 
-export function BtnLabels({ note }) {
+export function BtnLabels({ note, onToggleLabels }) {
     const [labels, setLabels] = useState([])
+    
     console.log(note)
     console.log(labels)
 
@@ -23,33 +24,38 @@ export function BtnLabels({ note }) {
         note.labels.push(labelName)
         noteService.save(note)
     }
-    function onRemoveLabel(labelName){
-        const idx=note.labels.findIndex(label=> label.labelName === labelName)
-        note.labels.splice(idx,1)
+    function onRemoveLabel(labelName) {
+        const idx = note.labels.findIndex(label => label.labelName === labelName)
+        note.labels.splice(idx, 1)
         noteService.save(note)
 
     }
-    
-function handleLabelChange({ target }) {
-    const labelName = target.value
-    // const label = labels.find((label) => label.labelName === labelName)
-    if (target.checked) {
-        onAddLabel(labelName)
-    } else {
-        onRemoveLabel(labelName)
+
+    function handleLabelChange({ target }) {
+        const labelName = target.value
+        if (target.checked) {
+            onAddLabel(labelName)
+        } else {
+            onRemoveLabel(labelName)
+        }
     }
-}
-return <form>
-    {labels.map((label) => (
-        <div key={label.id}>
-            <input
-                type="checkbox"
-                value={label.labelName}
-                onChange={handleLabelChange}
-            />
-            {label.labelName}
-        </div>
-    ))}
-</form>
+
+  
+
+    return <div>
+        <form>
+            {labels.map((label) => (
+                <div className="label" key={label.id}>
+                    <input
+                        id={label.id}
+                        type="checkbox"
+                        value={label.labelName}
+                        onChange={handleLabelChange}
+                    />
+                    <label htmlFor={label.id}>{label.labelName}</label>
+                </div>
+            ))}
+        </form>
+    </div>
 }
 
