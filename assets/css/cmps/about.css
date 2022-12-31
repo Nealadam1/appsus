@@ -1,0 +1,18 @@
+.img-content {
+    display: flex;
+    justify-content: center;
+}
+
+.img-content img {
+    width: 40%;
+    height: 40%;
+}
+
+.programmer-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.prog img {
+    width: 10vh;
+}
