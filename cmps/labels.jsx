@@ -6,7 +6,7 @@ const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
-export function Labels() {
+export function Labels({onSetFilter}) {
     const [labels, setLabels] = useState([])
     const [onSavedLabel, setSavedLabel] = useState(false)
 
@@ -45,7 +45,7 @@ export function Labels() {
             })
     }
     return <div className='label-container'>
-        {(labels) && <LabelList labels={labels} />}
+        {(labels) && <LabelList onSetFilter={onSetFilter} labels={labels} />}
         <Link to="/note/labeledit">Edit Labels</Link>
 
     </div>

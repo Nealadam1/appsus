@@ -51,7 +51,7 @@ function _createLabels() {
             },
             {
                 id:"F5i1UG",
-                labelName: 'funny',
+                labelName: 'Funny',
                 color: '#f6b73c'
             }]
     }
