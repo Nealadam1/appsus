@@ -116,7 +116,6 @@ export function NoteIndex() {
         <button className="side-menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}><i className="fa-solid fa-bars"></i></button>
         <NoteNav onSetFilter={onSetFilter} className={isMenuOpen ? "open" : ""} />
         <div className="notes-container">
-            <NoteFilter />
             <AddNote onCloseEdit={onCloseEdit} />
             {isLoading && <LoadingSpinner />}
             {!isLoading && <NoteList onOpenEdit={onOpenEdit} notes={notes} onRemoveNote={onRemoveNote} onArchiveNote={onArchiveNote} onPinNote={onPinNote} />}

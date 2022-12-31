@@ -81,6 +81,12 @@
   top: 8px;
   font-size: 23px;
 }
+.note-preview .mail-btn {
+  position: absolute;
+  right:45px;
+  top: 7px;
+  font-size: 26px;
+}
 
 .note .note-btns i:hover {
   background-color: #999;
