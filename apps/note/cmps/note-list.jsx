@@ -7,12 +7,14 @@ const Router = ReactRouterDOM.HashRouter;
 const { useState, useEffect, useRef } = React;
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM;
 
-export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote,onPinNote }) {
+export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote, onPinNote }) {
   const [sortedNotes, setSortedNotes] = useState(notes)
   const [toggleColorEdit, setColorEdit] = useState(false)
 
+
+
   const handleDragStart = (noteId) => (e) => {
-    e.dataTransfer.setData("noteId", noteId);
+    e.dataTransfer.setData("noteId", noteId)
   };
 
   const handleDrag = (e) => {
@@ -26,15 +28,15 @@ export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote,onPinN
   const handleDrop = (e) => {
     e.preventDefault();
     const noteId = e.dataTransfer.getData("noteId");
-    const index = sortedNotes.findIndex((note) => note.id === noteId);
-    const note = sortedNotes[index];
-    sortedNotes.splice(index, 1);
+    const index = sortedNotes.findIndex((note) => note.id === noteId)
+    const note = sortedNotes[index]
+    sortedNotes.splice(index, 1)
     // Calculate the new index for the element based on the mouse position
     const rect = e.currentTarget.getBoundingClientRect();
-    const y = e.clientY - rect.top;
-    const newIndex = Math.floor(y / (rect.height / sortedNotes.length));
+    const y = e.clientY - rect.top
+    const newIndex = Math.floor(y / (rect.height / sortedNotes.length))
     sortedNotes.splice(newIndex, 0, note);
-    setSortedNotes([...sortedNotes]);
+    setSortedNotes([...sortedNotes])
   };
 
   function onSetBackgroundColor(noteId) {
@@ -42,19 +44,20 @@ export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote,onPinN
     console.log(toggleColorEdit)
   }
 
+
   return (
     <div
       className="note-list"
       onDragEnter={(e) => {
-        // You can add some visual effects here when the element is dragged over the target
       }}
-      onDragOver={(e) => {
-        e.preventDefault();
+      onDragOver={(ev) => {
+        ev.preventDefault()
       }}
       onDrop={handleDrop}
     >
-      {sortedNotes.map((note) => (
-        <div style={{ backgroundColor: note.style }}
+      {sortedNotes.map((note) => {
+        const elLabelSelectRef = useRef(null);
+        return <div style={{ backgroundColor: note.style }}
           className="note"
           key={note.id}
           draggable
@@ -67,18 +70,20 @@ export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote,onPinN
           <div className="note-btns">
             <i className="fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></i>
             <i className="fa-solid fa-box-archive" onClick={() => onArchiveNote(note.id)}></i>
-            <i className="fa-solid fa-tag" onClick={() => onAddLabel(note.id)}>
+            <i className="fa-solid fa-tag" onClick={() => elLabelSelectRef.current.classList.toggle('active')}>
             </i>
-            
+
             <i className="fa-solid fa-palette" onClick={() => onSetBackgroundColor(note.id)}>
               <BtnSetColor onSetBackgroundColor={onSetBackgroundColor} note={note} />
-              </i>
+            </i>
             <i className="fa-solid fa-thumbtack" onClick={() => onPinNote(note.id)}></i>
           </div>
-          <BtnLabels note={note}/>
+          <div ref={elLabelSelectRef} className="note-label-select">
+            <BtnLabels note={note} />
+          </div>
         </div>
-      ))}
+      })}
 
     </div>
-  );
+  )
 }

@@ -1,9 +1,6 @@
 const { useParams, useNavigate, Link, NavLink, useLocation } = ReactRouterDOM
 
 import { MailFilter } from "../apps/mail/cmps/mail-filter.jsx";
-import { } from "appsus/assets/img/icon.png"
-
-import { } from ""
 export function AppHeader() {
     let { pathname } = useLocation()
 
