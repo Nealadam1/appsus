@@ -32,7 +32,6 @@ aside i.active {
 .label-list{
   border-radius: 0px;
   display: flex;
-  border-bottom: 2px solid rgb(0, 0, 0);
   align-items: center;
   
 }
