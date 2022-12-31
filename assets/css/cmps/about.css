@@ -10,9 +10,15 @@
 
 .programmer-data {
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.prog {
+    display: flex;
     flex-direction: column;
 }
 
 .prog img {
-    width: 10vh;
+    width: 30vh;
 }

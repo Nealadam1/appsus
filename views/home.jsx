@@ -20,5 +20,12 @@ export function Home() {
                 <h2>Notes</h2>
             </div>
         </div>
+
+        <div className="about-page">
+            <Link to="/about">
+                <img src="assets\img\About.svg" alt="" />
+            </Link>
+            <h2>Notes</h2>
+        </div>
     </section>
 }
