@@ -8,7 +8,7 @@ export function AppHeader() {
     return <header className="app-header header">
 
         <Link className="img-container" to="/">
-            <img className="logo" src="assets/img/testaaaa.jpg" alt="img" />
+            <img className="logo" src="test.png" alt="img" />
         </Link>
         <nav>
             <button className="app-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}><i className="fa-solid fa-square-caret-down"></i></button>
