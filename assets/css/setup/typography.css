@@ -13,3 +13,8 @@
     font-family: roboto;
     src: url('../../fonts/Roboto-Regular.ttf');
 }
+
+@font-face {
+    font-family: amongus;
+    src: url('../../fonts/AmongUs-Regular.ttf');
+}
