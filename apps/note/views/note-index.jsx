@@ -54,6 +54,7 @@ export function NoteIndex() {
                 console.log(note)
                 setNotes(updatedNotes)
                 showSuccessMsg(note.isTrash ? 'Note moved to Trash' : 'Removed from Trash')
+                
 
             })
             .catch((err) => {

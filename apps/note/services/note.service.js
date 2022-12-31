@@ -19,16 +19,22 @@ export const noteService = {
 function query(filterby = getDefaultFilter()) {
     return storageServiceAsync.query(NOTES_KEY)
         .then(notes => {
-            if (filterby.isTrash) {
-                notes = notes.filter(note => note.isTrash)
-            }
-            if (filterby.isArchived) {
-                notes = notes.filter(note => note.isArchived)
-            }
-            if (filterby.labels) {
-                notes = notes.filter(note => {
-                    return filterby.labels.some(label => note.labels.includes(label))
-                })
+            if (!filterby.isTrash && !filterby.isArchived) {
+                notes = notes.filter(note => !note.isTrash)
+                notes = notes.filter(note => !note.isArchived)
+                 if (filterby.labels) {
+                    notes = notes.filter(note => {
+                        return filterby.labels.some(label => note.labels.includes(label))
+                    })
+                }
+
+            } else {
+                if (filterby.isTrash) {
+                    notes = notes.filter(note => note.isTrash)
+                }
+                if (filterby.isArchived) {
+                    notes = notes.filter(note => note.isArchived)
+                }
             }
             return notes
         })
@@ -59,15 +65,15 @@ function save(note) {
     }
 }
 
-function getEmptyNote(type = '', isPinned = false, label = [], info = {
-    url: '', title: '', txt: ''
-    , label: '', todos: [{ id: "BLxn86", txt: '' }]
+function getEmptyNote(type = '', isArchived = false, isTrash = false, isPinned = false, label = [], info = {
+    url: '', title: '', txt: '',
+    label: '', todos: [{ id: "BLxn86", txt: '' }]
 }) {
-    return { type, isPinned, info, label }
+    return { type, isPinned, isArchived, isTrash, info, label }
 }
 
 function getDefaultFilter() {
-    return { labels:null, isArchived: '', isPinned: '', isTrash: '' }
+    return { labels: null, isArchived: false, isPinned: false, isTrash: false }
 }
 
 function _createNotes() {
@@ -76,7 +82,9 @@ function _createNotes() {
         notes = [{
             id: "n101",
             type: "note-txt",
+            isArchived: false,
             isPinned: true,
+            isTrash: false,
             labels: [],
             info: {
                 txt: "Fullstack Me Baby!",
@@ -87,6 +95,9 @@ function _createNotes() {
             id: "n102",
             type: "note-img",
             labels: [],
+            isArchived: false,
+            isPinned: false,
+            isTrash: false,
             info: {
                 url: "http://www.radicalart.info/something/On_Kawara-63-Something-NSE-s.jpg",
                 title: "Bobi and Me"
@@ -98,6 +109,9 @@ function _createNotes() {
         {
             id: "n103",
             type: "note-todos",
+            isArchived: false,
+            isPinned: false,
+            isTrash: false,
             labels: [],
             info: {
                 label: "Get my stuff together",
@@ -110,6 +124,9 @@ function _createNotes() {
         {
             id: "n104",
             type: "note-video",
+            isArchived: false,
+            isPinned: false,
+            isTrash: false,
             labels: [],
             info: {
                 url: "https://www.youtube.com/watch?v=NBMqqaClEQ8",
