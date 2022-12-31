@@ -65,11 +65,11 @@ function save(note) {
     }
 }
 
-function getEmptyNote(type = '', isArchived = false, isTrash = false, isPinned = false, label = [], info = {
+function getEmptyNote(type = '', isArchived = false, isTrash = false, isPinned = false, labels = [], info = {
     url: '', title: '', txt: '',
     label: '', todos: [{ id: "BLxn86", txt: '' }]
 }) {
-    return { type, isPinned, isArchived, isTrash, info, label }
+    return { type, isPinned, isArchived, isTrash, info, labels }
 }
 
 function getDefaultFilter() {
