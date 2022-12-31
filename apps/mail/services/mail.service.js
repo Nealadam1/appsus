@@ -112,7 +112,7 @@ function _demoData() {
 
     if (!emails || !emails.length) {
         emails = []
-        emails.push(_createMail('Miss you!', 'noreply@github.com', '[Nealadam1/appsus] Run cancelled: pages build and deployment - main (76abc65)', false, false, 1682222756881, loggedinUser.email, 'GitHub', false))
+        emails.push(_createMail('Git Hub', 'noreply@github.com', '[Nealadam1/appsus] Run cancelled: pages build and deployment - main (76abc65)', false, false, 1682222756881, loggedinUser.email, 'GitHub', false))
         emails.push(_createMail('Miss you!', 'fa@gaeaf.com', 'Would love to catch up sometimes', false, false, 1672222756881, loggedinUser.email, 'eden', false))
         emails.push(_createMail('Steam Store', 'steamStore@gmail.com', 'You have sold an item on the Community Market, An item you listed in the Community Market has been sold to RichHammond. Your Steam Wallet has been credited 0.01 ILS.', false, false, 1551133930594, loggedinUser.email, 'Steam Store'))
         emails.push(_createMail('Sumalian proplayer !', 'sumalilandplayerProproPro@gmail.com', 'Hello am 48 year man from somalia. Sorry for my bed england. I selled my wife for internet connection for play "conter strik" and i want to become the goodest player like you I play with 400 ping on brazil and i am global elite 2. pls no copy pasterio my story',

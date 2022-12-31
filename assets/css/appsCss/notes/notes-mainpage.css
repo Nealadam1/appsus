@@ -85,11 +85,13 @@
   /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
   .notes-index {
     margin-left: 0;
+    height: 100%;
   }
 
   .note-list {
     justify-content: center;
     overflow-y: scroll;
+    max-height: 100vh;
   }
 
   .notes-container {
