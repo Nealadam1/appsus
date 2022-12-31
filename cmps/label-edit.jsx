@@ -13,7 +13,7 @@ export function LabelEdit() {
     const elInputRef = useRef(null)
 
 
-    console.log(labelsToEdit)
+    // console.log(labelsToEdit)
     useEffect(() => {
         loadLabels()
 
@@ -25,7 +25,7 @@ export function LabelEdit() {
         labelService.query()
             .then(labels => {
                 setLabelsToEdit(labels)
-                console.log(labels)
+                // console.log(labels)
             })
     }
     function onRemoveLabel(labelId, ev) {
@@ -55,7 +55,7 @@ export function LabelEdit() {
     }
     function onSaveLabels(ev) {
         ev.preventDefault()
-        console.log(labelsToEdit)
+        // console.log(labelsToEdit)
         labelService.set(labelsToEdit)
         eventBusService.emit('label-saved')
         console.log('labels saved', labelsToEdit)

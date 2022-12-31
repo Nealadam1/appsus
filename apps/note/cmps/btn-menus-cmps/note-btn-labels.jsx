@@ -7,9 +7,9 @@ const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRo
 
 export function BtnLabels({ note, onToggleLabels }) {
     const [labels, setLabels] = useState([])
-    
-    console.log(note)
-    console.log(labels)
+
+    // console.log(note)
+    // console.log(labels)
 
     useEffect(() => {
         loadLabels()
@@ -40,7 +40,7 @@ export function BtnLabels({ note, onToggleLabels }) {
         }
     }
 
-  
+
 
     return <div>
         <form>

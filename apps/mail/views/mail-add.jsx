@@ -1,11 +1,23 @@
-const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
+const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate, useLocation } = ReactRouterDOM
 const { useState, useEffect } = React
 
 import { mailService } from "../services/mail.service.js"
 
 export function MailAdd() {
+    const location = useLocation()
     const navigate = useNavigate()
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
+
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search)
+        const subject = searchParams.get('subject')
+        const body = searchParams.get('body')
+        console.log(subject);
+
+        if (subject) setNewMail(prevMail => ({ ...prevMail, subject }))
+        if (body) setNewMail(prevMail => ({ ...prevMail, body }))
+    }, [location])
 
     function onSaveMail(ev) {
         ev.preventDefault()

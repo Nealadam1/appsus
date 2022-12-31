@@ -4,7 +4,7 @@ const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
-export function NoteVideoEdit({isVisible}) {
+export function NoteVideoEdit({ isVisible }) {
   const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
   const navigate = useNavigate()
   const { noteId } = useParams()
@@ -27,7 +27,7 @@ export function NoteVideoEdit({isVisible}) {
     let { value, type, name: field } = target
     value = type === 'number' ? +value : value
     setNoteToEdit((prevnote) => ({ ...prevnote, "info": { ...prevnote.info, [field]: value } }))
-    console.log(noteToEdit)
+    // console.log(noteToEdit)
   }
 
   function onSaveNote(ev) {

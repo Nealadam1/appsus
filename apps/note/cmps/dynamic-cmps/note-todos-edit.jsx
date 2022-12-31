@@ -5,7 +5,7 @@ const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
-export function NoteTodosEdit({isVisible}) {
+export function NoteTodosEdit({ isVisible }) {
     const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
     const navigate = useNavigate()
     const { noteId } = useParams()
@@ -35,7 +35,7 @@ export function NoteTodosEdit({isVisible}) {
             setNoteToEdit((prevnote) => noteParse)
         }
         if (field === 'label') setNoteToEdit((prevnote) => ({ ...prevnote, "info": { ...prevnote.info, [field]: value } }))
-        console.log(noteToEdit)
+        // console.log(noteToEdit)
     }
 
     function onSaveNote(ev) {
@@ -59,7 +59,7 @@ export function NoteTodosEdit({isVisible}) {
 
     function onRemoveTodo(todoId, ev) {
         console.log(ev.keyCode)
-        console.log(noteToEdit.info.todos)
+        // console.log(noteToEdit.info.todos)
         const updatedTodos = noteToEdit.info.todos.filter(todo => todo.id !== todoId)
         noteToEdit.info.todos = updatedTodos
         const noteJson = JSON.stringify(noteToEdit)
@@ -91,12 +91,12 @@ export function NoteTodosEdit({isVisible}) {
             })}
             <hr />
             <div>
-                <p className="list-todo"onClick={() => onaddTodo()}>List Todo +</p>
+                <p className="list-todo" onClick={() => onaddTodo()}>List Todo +</p>
             </div>
             <div className="save-btns">
-                <p onClick={()=>isVisible()}>Close</p>
+                <p onClick={() => isVisible()}>Close</p>
                 <p className="save" onClick={onSaveNote} >{noteToEdit.id ? 'Save' : 'Create'}</p>
-                
+
             </div>
         </div>
 
