@@ -27,7 +27,6 @@ export function NoteVideoEdit({ isVisible }) {
     let { value, type, name: field } = target
     value = type === 'number' ? +value : value
     setNoteToEdit((prevnote) => ({ ...prevnote, "info": { ...prevnote.info, [field]: value } }))
-    // console.log(noteToEdit)
   }
 
   function onSaveNote(ev) {

@@ -11,7 +11,6 @@ export function NoteEdit({ onCloseEdit }) {
     const navigate = useNavigate()
     const { noteId } = useParams()
 
-    // console.log(noteId)
     useEffect(() => {
         if (!noteId) navigate('/note')
         loadNote()

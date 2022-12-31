@@ -29,7 +29,6 @@ export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote, onPin
   }
   function onSetBackgroundColor(noteId) {
     setColorEdit({ toggle: !toggleColorEdit.toggle, id: noteId })
-    console.log(toggleColorEdit)
   }
   return (
     <div

@@ -25,7 +25,7 @@ export function Home() {
             <Link to="/about">
                 <img src="assets\img\About.svg" alt="" />
             </Link>
-            <h2>Notes</h2>
+            <h2>About</h2>
         </div>
     </section>
 }

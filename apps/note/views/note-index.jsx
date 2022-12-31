@@ -1,4 +1,4 @@
-import { NoteFilter } from "../cmps/note-filter.jsx"
+
 import { NoteList } from "../cmps/note-list.jsx"
 import { noteService } from "../services/note.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
@@ -31,7 +31,6 @@ export function NoteIndex() {
         setIsLoading(true)
         noteService.query(filterBy)
             .then((notes) => {
-                // console.log(notes)
                 setNotes(notes)
                 setIsLoading(false)
             })
@@ -42,7 +41,6 @@ export function NoteIndex() {
     }
 
     function onRemoveNote(noteId) {
-        // console.log(noteId)
         noteService.get(noteId)
             .then((note) => {
                 if (note.isTrash) {
@@ -52,7 +50,6 @@ export function NoteIndex() {
                 }
                 noteService.save(note)
                 const updatedNotes = notes.filter(note => note.id !== noteId)
-                // console.log(note)
                 setNotes(updatedNotes)
                 showSuccessMsg(note.isTrash ? 'Note moved to Trash' : 'Removed from Trash')
                 setTimeout(() => {
@@ -67,7 +64,6 @@ export function NoteIndex() {
     }
 
     function onArchiveNote(noteId) {
-        // console.log(noteId)
         noteService.get(noteId)
             .then((note) => {
                 if (note.isArchived) {
@@ -77,7 +73,6 @@ export function NoteIndex() {
                 }
                 noteService.save(note)
                 const updatedNotes = notes.filter(note => note.id !== noteId)
-                // console.log(note)
                 setNotes(updatedNotes)
                 showSuccessMsg(note.isArchived ? 'Note moved to Archive' : 'Removed From Archive')
                 setTimeout(() => {
@@ -100,24 +95,18 @@ export function NoteIndex() {
                 }
                 noteService.save(note)
                 const updatedNotes = notes.filter(note => note.id !== noteId)
-                // console.log(note)
                 setNotes(updatedNotes)
                 showSuccessMsg(note.isPinned ? 'Note Pinned' : 'Pin removed')
             })
-        // console.log(notes)
     }
 
     function onCloseEdit() {
         navigate('/note')
         setEditModal(false)
         setSaveModal(!isSaveModal)
-        console.log(isSaveModal)
-
-
     }
 
     function onOpenEdit() {
-        console.log('yey')
         setEditModal(true)
     }
     return <section className="notes-index">
@@ -128,8 +117,6 @@ export function NoteIndex() {
             {isLoading && <LoadingSpinner />}
             {!isLoading && <NoteList onOpenEdit={onOpenEdit} notes={notes} onRemoveNote={onRemoveNote} onArchiveNote={onArchiveNote} onPinNote={onPinNote} />}
             {(isEditModal) && <NoteEdit onCloseEdit={onCloseEdit} />}
-
-
         </div>
     </section>
 

@@ -8,8 +8,7 @@ const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRo
 export function BtnLabels({ note, onToggleLabels }) {
     const [labels, setLabels] = useState([])
     const [ischecked, setChecked] = useState(false)
-    console.log(note)
-    console.log(labels)
+   
 
     useEffect(() => {
         loadLabels()
@@ -41,10 +40,6 @@ export function BtnLabels({ note, onToggleLabels }) {
         setChecked(!ischecked)
 
     }
-
-    console.log(note)
-
-
 
     return <div>
         <form>

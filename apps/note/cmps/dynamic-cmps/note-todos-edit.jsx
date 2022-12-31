@@ -35,7 +35,6 @@ export function NoteTodosEdit({ isVisible }) {
             setNoteToEdit((prevnote) => noteParse)
         }
         if (field === 'label') setNoteToEdit((prevnote) => ({ ...prevnote, "info": { ...prevnote.info, [field]: value } }))
-        // console.log(noteToEdit)
     }
 
     function onSaveNote(ev) {
@@ -43,7 +42,6 @@ export function NoteTodosEdit({ isVisible }) {
         ev.preventDefault()
         noteToEdit.type = 'note-todos'
         noteService.save(noteToEdit).then((note) => {
-            console.log('note saved', note);
             showSuccessMsg('Note saved!')
             isVisible()
 
@@ -58,8 +56,6 @@ export function NoteTodosEdit({ isVisible }) {
     }
 
     function onRemoveTodo(todoId, ev) {
-        console.log(ev.keyCode)
-        // console.log(noteToEdit.info.todos)
         const updatedTodos = noteToEdit.info.todos.filter(todo => todo.id !== todoId)
         noteToEdit.info.todos = updatedTodos
         const noteJson = JSON.stringify(noteToEdit)
@@ -67,7 +63,6 @@ export function NoteTodosEdit({ isVisible }) {
         setNoteToEdit((prevnote) => noteParse)
 
     }
-
 
     return <div >
         <div>

@@ -27,14 +27,12 @@ export function NoteImgEdit({ isVisible }) {
     let { value, type, name: field } = target
     value = type === 'number' ? +value : value
     setNoteToEdit((prevnote) => ({ ...prevnote, "info": { ...prevnote.info, [field]: value } }))
-    // console.log(noteToEdit)
   }
 
   function onSaveNote(ev) {
     ev.preventDefault()
     noteToEdit.type = 'note-img'
     noteService.save(noteToEdit).then((note) => {
-      console.log('note saved', note);
       showSuccessMsg('Note saved!')
       navigate('/note')
       isVisible()

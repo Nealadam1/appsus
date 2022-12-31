@@ -18,7 +18,6 @@ export function AddNote({ onCloseEdit }) {
     function setNoteType(noteType, ev) {
         ev.stopPropagation()
         setNote((prevnote) => ({ ...prevnote, type: noteType }))
-        // console.log(note)
     }
 
     function isVisible() {
