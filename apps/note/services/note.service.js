@@ -19,10 +19,6 @@ export const noteService = {
 function query(filterby = getDefaultFilter()) {
     return storageServiceAsync.query(NOTES_KEY)
         .then(notes => {
-            // if (filterby.labels) {
-            //     const regex = new RegExp(filterby.txt, 'i')
-            //     notes = notes.filter(note => regex.test(note.label))
-            // }
             if (filterby.isTrash) {
                 notes = notes.filter(note => note.isTrash)
             }
@@ -71,7 +67,7 @@ function getEmptyNote(type = '', isPinned = false, label = [], info = {
 }
 
 function getDefaultFilter() {
-    return { labels: [], isArchived: '', isPinned: '', isTrash: '' }
+    return { labels:null, isArchived: '', isPinned: '', isTrash: '' }
 }
 
 function _createNotes() {
