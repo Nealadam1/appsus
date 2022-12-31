@@ -24,16 +24,20 @@ export function NoteIndex() {
 
     useEffect(() => {
         loadNotes()
-    }, [isEditModal, isSaveModal])
+    }, [isEditModal, isSaveModal,filterBy])
 
     function loadNotes() {
         setIsLoading(true)
-        noteService.query()
+        noteService.query(filterBy)
             .then((notes) => {
                 console.log(notes)
                 setNotes(notes)
                 setIsLoading(false)
             })
+    }
+
+    function onSetFilter(filterBy){
+        setFilterBy(filterBy)
     }
 
     function onRemoveNote(noteId) {
@@ -110,7 +114,7 @@ export function NoteIndex() {
     }
     return <section className="notes-index">
         <button className="side-menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}><i className="fa-solid fa-bars"></i></button>
-        <NoteNav className={isMenuOpen ? "open" : ""} />
+        <NoteNav onSetFilter={onSetFilter} className={isMenuOpen ? "open" : ""} />
         <div className="notes-container">
             <NoteFilter />
             <AddNote onCloseEdit={onCloseEdit} />
