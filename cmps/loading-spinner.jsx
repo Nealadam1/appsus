@@ -5,5 +5,5 @@ export function LoadingSpinner() {
             <div className="loading-spinner">
             </div>
         </div>
-    );
+    )
 }
