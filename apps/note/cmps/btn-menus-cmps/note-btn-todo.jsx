@@ -21,7 +21,7 @@ export function BtnSetColor({ note, onSetBackgroundColor }) {
         
     }
 
-    return <select menuPlacement="bottom" onChange={handleChange} className="color-menu">
+    return <select onChange={handleChange} className="color-menu">
         {options.map(option => {
             return <option key={option.value} value={option.value}>
                 {option.label}
