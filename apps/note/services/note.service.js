@@ -52,9 +52,9 @@ function save(note) {
     }
 }
 
-function getEmptyNote(type = '', isPinned = false, info = {url:'',title:'',txt:''
+function getEmptyNote(type = '', isPinned = false, label=[], info = {url:'',title:'',txt:''
 ,label:'', todos:[{id:"BLxn86" ,txt:''}]}){
-return { type, isPinned, info }
+return { type, isPinned, info,label }
 }
 
 function getDefaultFilter() {
@@ -68,6 +68,7 @@ function _createNotes() {
             id: "n101",
             type: "note-txt",
             isPinned: true,
+            labels:[],
             info: {
                 txt: "Fullstack Me Baby!",
                 title: "someTitle"
@@ -76,6 +77,7 @@ function _createNotes() {
         {
             id: "n102",
             type: "note-img",
+            labels:[],
             info: {
                 url: "http://www.radicalart.info/something/On_Kawara-63-Something-NSE-s.jpg",
                 title: "Bobi and Me"
@@ -87,17 +89,19 @@ function _createNotes() {
         {
             id: "n103",
             type: "note-todos",
+            labels:[],
             info: {
                 label: "Get my stuff together",
                 todos: [
-                    {id:1 ,txt: "Driving liscence", doneAt: null },
-                    {id:2, txt: "Coding power", doneAt: 187111111 }
+                    {id:"dsadsa" ,txt: "Driving liscence", doneAt: null },
+                    {id:"ddjhg", txt: "Coding power", doneAt: 187111111 }
                 ]
             }
         },
         {
             id: "n104",
             type: "note-video",
+            labels:[],
             info: {
                 url: "https://www.youtube.com/watch?v=NBMqqaClEQ8",
                 title: "test vid"

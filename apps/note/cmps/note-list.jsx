@@ -1,4 +1,5 @@
 import { noteService } from "../services/note.service.js";
+import { BtnLabels } from "./btn-menus-cmps/note-btn-labels.jsx";
 import { BtnSetColor } from "./btn-menus-cmps/note-btn-todo.jsx";
 import { NotePreview } from "./note-preview.jsx";
 
@@ -6,7 +7,7 @@ const Router = ReactRouterDOM.HashRouter;
 const { useState, useEffect, useRef } = React;
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM;
 
-export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote }) {
+export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote,onPinNote }) {
   const [sortedNotes, setSortedNotes] = useState(notes)
   const [toggleColorEdit, setColorEdit] = useState(false)
 
@@ -66,13 +67,15 @@ export function NoteList({ notes, onRemoveNote, onOpenEdit, onArchiveNote }) {
           <div className="note-btns">
             <i className="fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></i>
             <i className="fa-solid fa-box-archive" onClick={() => onArchiveNote(note.id)}></i>
-            <i className="fa-solid fa-tag" onClick={() => onAddLabel(note.id)}></i>
+            <i className="fa-solid fa-tag" onClick={() => onAddLabel(note.id)}>
+            </i>
+            
             <i className="fa-solid fa-palette" onClick={() => onSetBackgroundColor(note.id)}>
               <BtnSetColor onSetBackgroundColor={onSetBackgroundColor} note={note} />
               </i>
             <i className="fa-solid fa-thumbtack" onClick={() => onPinNote(note.id)}></i>
           </div>
-
+          <BtnLabels note={note}/>
         </div>
       ))}
 

@@ -37,11 +37,12 @@ export function NoteImgEdit({isVisible}) {
       console.log('note saved', note);
       showSuccessMsg('Note saved!')
       navigate('/note')
+      isVisible()
     })
   }
 
 
-  return <div className="edit-note-container" >
+  return <div>
     <div >
       <input type="text"
         name="title"
@@ -55,7 +56,7 @@ export function NoteImgEdit({isVisible}) {
         value={noteToEdit.info.url}
         onChange={handleChange} />
       <div>
-        <button onSubmit={onSaveNote}>{noteToEdit.id ? 'Save' : 'Create'}</button>
+        <p onClick={onSaveNote}>{noteToEdit.id ? 'Save' : 'Create'}</p>
         <p onClick={() => isVisible()} >Close</p>
       </div>
     </div>

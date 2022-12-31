@@ -7,13 +7,13 @@ const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
-export function AddNote() {
+export function AddNote({onCloseEdit}) {
     const [note, setNote] = useState({})
 
     useEffect(() => {
         setNote(() => noteService.getEmptyNote())
     }, [])
-    console.log(note)
+
 
     function setNoteType(noteType, ev) {
         ev.stopPropagation()
@@ -24,6 +24,7 @@ export function AddNote() {
     function isVisible() {
         const updatedNote = note.type = ''
         setNote(updatedNote)
+        onCloseEdit()
 
     }
 
@@ -42,14 +43,15 @@ export function AddNote() {
 
         </div>
         <div>
-            {(note.type) && <DynamicCmpEdit isVisible={isVisible} type={note.type} info={note.info} style={note.style} />}
+
+            {(note.type) &&
+                <div>
+                    <div className="edit-note-container">
+                        <DynamicCmpEdit isVisible={isVisible} type={note.type} info={note.info} style={note.style} />
+                    </div>
+                    <div onClick={isVisible} className="dark-background"></div>
+                </div>}
         </div>
     </div>
 
 }
-
-
-
-
-// add note inside fake input,get empty note based on button presed with type
-// opens dynmic cmp base on type which opens dynmic edit

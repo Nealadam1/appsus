@@ -5,7 +5,7 @@ const Router = ReactRouterDOM.HashRouter
 const { useState, useEffect, useRef } = React
 const { Link, NavLink, Route, Routes, Outlet, useParams, useNavigate } = ReactRouterDOM
 
-export function NoteEdit({onCloseEdit}) {
+export function NoteEdit({ onCloseEdit }) {
     const [isVisible, setIsVisible] = useState(false)
     const [noteToEdit, setNoteToEdit] = useState([])
     const navigate = useNavigate()
@@ -22,15 +22,18 @@ export function NoteEdit({onCloseEdit}) {
             .catch((err) => {
                 console.log('Had issues in note details', err)
                 navigate('/note')
-                
-            })   
+
+            })
     }
-    function updateVisible(){
+    function updateVisible() {
         onCloseEdit()
     }
 
-    return <div className="note-edit-container">
-        <DynamicCmpEdit isVisible={updateVisible}noteId={noteId} type={noteToEdit.type} info={noteToEdit.info} style={noteToEdit.style} />
+    return <div>
+        <div className="note-edit-container">
+            <DynamicCmpEdit isVisible={updateVisible} noteId={noteId} type={noteToEdit.type} info={noteToEdit.info} style={noteToEdit.style} />
+        </div>
+        <div onClick={updateVisible} className="dark-background"></div>
     </div>
 
 }

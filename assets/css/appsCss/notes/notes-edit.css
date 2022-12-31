@@ -8,6 +8,7 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     border-radius: 30px;
     padding: 20px;
+    z-index: 3;
     
 }
 
@@ -58,8 +59,9 @@
 .note-edit-container textarea{
     resize: none;
     font-family: roboto;
+    margin: 0;
     border-radius: 8px;
-    border: solid 0.3px lightgray
+    border: none
 }
 
 .note-edit-container .list-todo:hover{
@@ -67,3 +69,17 @@
     cursor: pointer;
    
 }
+
+.dark-background{
+    position: fixed;
+    right: 0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    background-color: #212121;
+    z-index: 2;
+    opacity: 0.5;
+    cursor: pointer;
+  
+  }
+  

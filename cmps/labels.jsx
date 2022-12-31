@@ -42,7 +42,6 @@ export function Labels() {
         labelService.query()
             .then(labels => {
                 setLabels(labels)
-                console.log(labels)
             })
     }
     return <div className='label-container'>

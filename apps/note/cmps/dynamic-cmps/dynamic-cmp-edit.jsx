@@ -5,7 +5,6 @@ import { NoteVideoEdit } from "./note-video-edit.jsx"
 
 
 export function DynamicCmpEdit(props) {
-    console.log(props.type)
     switch (props.type) {
         case 'note-txt':
             return <NoteTxtEdit {...props} />

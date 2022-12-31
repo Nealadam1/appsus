@@ -4,7 +4,6 @@ import { NoteTxt } from "./note-txt.jsx";
 import { NoteVideo } from "./note-video.jsx";
 
 export function DynamicCmp(props) {
-    console.log(props.type)
     switch (props.type) {
         case 'note-txt':
             return <NoteTxt {...props} />

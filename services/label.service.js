@@ -9,6 +9,7 @@ export const labelService = {
     remove,
     save,
     getEmptyLabel,
+    set,
 }
 
 function query() {
@@ -17,6 +18,10 @@ function query() {
 
 function get(lableId) {
     return storageServiceAsync.get(LABELS_KEY, lableId)
+}
+
+function set(labels){
+    return storageServiceAsync.set(LABELS_KEY, labels)
 }
 
 function remove(lableId) {

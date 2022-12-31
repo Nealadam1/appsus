@@ -2,11 +2,6 @@ export const youtubeService={
     getVideoByUrl
 }
 
-
-function getWindowSize() {
-    const { innerWidth } = window;
-    return innerWidth
-}
 function getVideoByUrl(url) {
     const videoId = url.split("v=")[1]
     const embedCode = <iframe
@@ -15,7 +10,7 @@ function getVideoByUrl(url) {
     frameBorder="0" allow="accelerometer; 
     autoplay; clipboard-write; encrypted-media; 
     gyroscope; picture-in-picture" allowFullScreen>
-    </iframe>;
+    </iframe>
 
     return embedCode
 }

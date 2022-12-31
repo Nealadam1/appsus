@@ -69,7 +69,7 @@ export function NoteTodosEdit({isVisible}) {
     }
 
 
-    return <div className="edit-note-container">
+    return <div >
         <div>
             <input type="text"
                 name="label"
